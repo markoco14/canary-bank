@@ -1,0 +1,132 @@
+/*//call the JSON data with XMLHttpRequest
+let url = 'studentNamesData.json';
+let request = new XMLHttpRequest();
+request.open('GET', url);
+request.responseType = 'JSON';
+request.onload = function() {
+	console.log(request.response)
+}
+request.send()*/
+[
+	{
+ 		"name": "Flatley",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Ella",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Mandy",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Eason",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Kyle",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Anson",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Thomas",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Sheldon",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Regina",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Rex",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Evie",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Owen",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Austin",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Daniel",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Sophia",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Kate",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Neil",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Amber",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Adele",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+	{
+		"name":"Ryan",
+		"age": "",
+		"birthday": "",
+		"tokens": ""
+	},
+
+]
