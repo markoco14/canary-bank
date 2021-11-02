@@ -9,6 +9,8 @@
 //prepare variables
 
 const selector = document.getElementById('class-options');
+// i should be able to use PHP to get the user name
+// i need to change so many of these methods to php in order to write them in a more clean way
 const userID = document.getElementById('name-span');
 let teachers;
 let students;
@@ -38,6 +40,8 @@ fetch('includes/fetchTeacherData.php')
    .then(function(classes) {
    	console.log(classes);
    }).then(function() {
+
+   	// this for loop is basically fulfilling the function of .filter 
    	for (i = 0; i < classes.length; i++) {
 				if (classes[i].classesTeacheruid !== userID.textContent) {
 					idFound = false;
