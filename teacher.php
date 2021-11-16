@@ -23,12 +23,12 @@
 			<!--Service info section begins here -->
 			<?php 
 
-			// 	if(!$conn) {
-			// 	echo "You are not connected to the database";
-			// }
-			// else {
-			// 	echo "You are connected to the database";
-			// } 
+				if(!$conn) {
+				echo "You are not connected to the database";
+			}
+			else {
+				echo "You are connected to the database";
+			} 
 
 
 			?>
@@ -98,26 +98,26 @@
 					<select id='choose-class' name='class'>
 						<option>Choose class:</option>
 					</select>
-<!-- 					<select name="classes" id="classes">
-						<option value="None">Select class</option> -->
+					<select name="classes" id="classes">
+						<option value="None">Select class</option>
 						<?php 
-							// $teacherName = $_SESSION['useruid'];
-							// //  WHERE classesTeacheruid = $_SESSION['useruid']
-							// $query = "SELECT * FROM classes";
-							// $results = mysqli_query($conn, $query);
+							$teacherName = $_SESSION['useruid'];
+							//  WHERE classesTeacheruid = $_SESSION['useruid']
+							$query = "SELECT * FROM classes";
+							$results = mysqli_query($conn, $query);
 
-							// while($row = mysqli_fetch_array($results)) {
-							// 	$classID = $row['classesDataID'];
-							// 	$className = $row['classesName'];
+							while($row = mysqli_fetch_array($results)) {
+								$classID = $row['classesDataID'];
+								$className = $row['classesName'];
 
-							// 	echo "<option value='{$classID}>{$className}</option>";
-							// }
+								echo "<option value='{$classID}>{$className}</option>";
+							}
 
 						 ?>
-					<!-- </select> -->
+					</select>
 					<?php 
 
-						// echo $teacherName;
+						echo $teacherName;
 					 ?>
 					<input id='classuid-value' type='hidden' name='classuid' placeholder='Class UID...'>
 					<input type='text' name='name' placeholder='First name...'>
