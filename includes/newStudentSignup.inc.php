@@ -1,40 +1,54 @@
 <?php
+//connect to the necessary php scripts
+//dbh.inc.php gets us to the database
+//we choose where later
+require_once "dbh.inc.php";
+//functions.inc.php gives us access to the functions
+//we will define a new student account function
+//in the functions php script
+require_once "functions.inc.php";
+//maybe I will make this a new functions script??
+//or make a very clear new section in the functions 
+//document
 
 if (isset($_POST["submit"])) {
 
-	$name = $_POST["name"];
-	$id = $_POST["id"];
-	$class = $_POST["class"];
-	$classuid = $_POST["classuid"];
-	$age = $_POST["age"];
-	$gender = $_POST["gender"];
-	$happyFaces = $_POST["happyfaces"];
-	$tokens = $_POST["tokens"];
+	$studentName = $_POST["name"];
+	$studentId = $_POST["id"];
+	$studentClassUid = $_POST["class"];
+	// $classuid = $_POST["classuid"];
+	$studentAge = $_POST["age"];
+	$studentGender = $_POST["gender"];
+	$studentHappyFaces = $_POST["happyfaces"];
+	$studentTokens = $_POST["tokens"];
 
-	//connect to the necessary php scripts
-	//dbh.inc.php gets us to the database
-	//we choose where later
-	require_once "dbh.inc.php";
-	//functions.inc.php gives us access to the functions
-	//we will define a new student account function
-	//in the functions php script
-	require_once "functions.inc.php";
-	//maybe I will make this a new functions script??
-	//or make a very clear new section in the functions 
-	//document
+	// $query = "SELECT `classesName` FROM classes WHERE `classesUid` = '{$studentClass}'";
+	$query = "SELECT * FROM classes WHERE `classesUid` = '{$studentClassUid}'";
+	$query_results = mysqli_query($conn, $query);
 
-	//check for errors
-	if (emptyStudentInfo($name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens) !== false) {
-		header("location: ../teacher.php?error=emptyinput");
-		exit();
+	while ($row = mysqli_fetch_array($query_results)){
+		$studentClassName = $row['classesName'];
 	}
+	
+	//check for errors
+	// 
+	// 
+	// 
+	// THERE IS A PROBLEM WITH THE emptyStudentInfo CHECK
+	// 
+	// 
+	// 
+	// if (emptyStudentInfo($studentName, $studentId, $studentClassuid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens) !== false) {
+	// 	header("location: ../teacher.php?error=emptyinput");
+	// 	exit();
+	// }
 
-	if (invalidStudentId($id) !== false) {
+	if (invalidStudentId($studentId) !== false) {
 		header("location: ../teacher.php?error=invalidstudentid");
 		exit();
 	}
 
-	if (invalidClass($class) !== false) {
+	if (invalidClass($studentClassName) !== false) {
 		header("location: ../teacher.php?error=invalidclass");
 		exit();
 	}
@@ -44,23 +58,23 @@ if (isset($_POST["submit"])) {
 		exit();
 	}*/
 
-	if (ageNotNumber($age) !== false) {
+	if (ageNotNumber($studentAge) !== false) {
 		header("location: ../teacher.php?error=agenotnumber");
 		exit();
 	}
 
-	if (facesNotNumber($happyFaces) !== false) {
+	if (facesNotNumber($studentHappyFaces) !== false) {
 		header("location: ../teacher.php?error=facesnotnumber");
 		exit();
 	}
 
-	if (tokensNotNumber($tokens) !== false) {
+	if (tokensNotNumber($studentTokens) !== false) {
 		header("location: ../teacher.php?error=tokensnotnumber");
 		exit();
 	}
 
 
-	if (studentIdExists($conn, $id) !== false) {
+	if (studentIdExists($conn, $studentId) !== false) {
 		header("location: ../teacher.php?error=studentidtaken");
 		exit();
 	}
@@ -68,7 +82,7 @@ if (isset($_POST["submit"])) {
 	//when all the checks are passed
 	//we can take the results of the functions.inc.php 
 	//and pass them back into the create user function
-	newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens);
+	newStudentAccount($conn, $studentName, $studentId, $studentClassName, $studentClassUid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens);
 } else {
 	header("location: ../teacher.php");
 	exit();

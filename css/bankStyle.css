@@ -25,8 +25,20 @@ body {
 	margin:0px;
 	padding:0px;
 }
+
+section {
+	/*min-height: 50vh;*/
+	margin-top: 2rem;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: auto;
+}
 /*Teacher info section begins here*/
-.teacher-section {
+.welcome-section {
 	text-align:center;
 }
 /*Service info section begins here*/
@@ -49,7 +61,7 @@ body {
 
 /*The Add/View Class section begins here*/
 
-.class-section {
+.create-classes-section {
 	position:relative;
 	padding: 5px 5px;
 }
@@ -68,6 +80,14 @@ body {
 	background-color:var(--background);
 }
 
+.toggle-profiles-button-wrapper {
+	display: flex;
+}
+
+.toggle-profiles-button {
+	width: 50%;
+}
+
 /*THIS BOX WRAPS THE NAV AND BODY CONTENT TOGETHER*/
 .nav-body-box {
 	display:flex;
@@ -75,13 +95,13 @@ body {
 
 /*WRAP ALL THE BODY CONTENT IN ONE CONTAINER*/
 /*SEPARATES BOD CONTENT FROM NAV ON LEFT*/
-.whole-content-box {
+.container {
 	margin-left:15vw;
 	margin-right:15vw;
 	height:200vh;
 }
 
-.whole-content-box h2 {
+.container h2 {
 	text-align:center;
 }
 

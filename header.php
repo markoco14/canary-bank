@@ -9,7 +9,7 @@
 		<title>Canary Bank</title>
 		<link href='css/bankStyle.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
 		<link href='css/headerStyles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
-		<link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
+		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>
 		<header>
