@@ -1,6 +1,9 @@
 <?php
 	include_once 'header.php';
+	include_once 'includes/dbh.inc.php';
 ?>
+
+
 <!-- DOCTYPE -->
 	<!-- body-->
 	<!-- /head-->
@@ -18,6 +21,17 @@
 				</h2>
 			</section>
 			<!--Service info section begins here -->
+			<?php 
+
+			// 	if(!$conn) {
+			// 	echo "You are not connected to the database";
+			// }
+			// else {
+			// 	echo "You are connected to the database";
+			// } 
+
+
+			?>
 			<p>Welcome to the Canary Bank -- the safest place for your students to save their Canary Tokens and build their futures. Help your students open an account and manage their savings all in one place.</p>
 			<section class='info-container'>
 				<div class='info-item'>
@@ -84,6 +98,27 @@
 					<select id='choose-class' name='class'>
 						<option>Choose class:</option>
 					</select>
+<!-- 					<select name="classes" id="classes">
+						<option value="None">Select class</option> -->
+						<?php 
+							// $teacherName = $_SESSION['useruid'];
+							// //  WHERE classesTeacheruid = $_SESSION['useruid']
+							// $query = "SELECT * FROM classes";
+							// $results = mysqli_query($conn, $query);
+
+							// while($row = mysqli_fetch_array($results)) {
+							// 	$classID = $row['classesDataID'];
+							// 	$className = $row['classesName'];
+
+							// 	echo "<option value='{$classID}>{$className}</option>";
+							// }
+
+						 ?>
+					<!-- </select> -->
+					<?php 
+
+						// echo $teacherName;
+					 ?>
 					<input id='classuid-value' type='hidden' name='classuid' placeholder='Class UID...'>
 					<input type='text' name='name' placeholder='First name...'>
 					<input type='text' name='id' placeholder='Student ID...'>
