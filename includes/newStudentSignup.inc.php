@@ -31,17 +31,7 @@ if (isset($_POST["submit"])) {
 	}
 	
 	//check for errors
-	// 
-	// 
-	// 
-	// THERE IS A PROBLEM WITH THE emptyStudentInfo CHECK
-	// 
-	// 
-	// 
-	// if (emptyStudentInfo($studentName, $studentId, $studentClassuid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens) !== false) {
-	// 	header("location: ../teacher.php?error=emptyinput");
-	// 	exit();
-	// }
+	
 
 	if (invalidStudentId($studentId) !== false) {
 		header("location: ../teacher.php?error=invalidstudentid");
@@ -78,7 +68,52 @@ if (isset($_POST["submit"])) {
 		header("location: ../teacher.php?error=studentidtaken");
 		exit();
 	}
-//create user needs to be last here
+
+
+
+
+
+
+	// after the student information passes inspection
+	// we need to update the classes table
+	// by increasing the class size number
+	// step 1: query the classes table searching and get the classTotalstudents column, add 1 to that value, that's all that's necessary.
+	// I will write an update all classes script later.
+	// that will get each class's total student count caught up
+	// step 2: +1 to that number
+	// step 3: update it into the classes table
+	$class_count_query = "SELECT * FROM classes WHERE `classesUid` = '$studentClassUid'";
+	// die($class_count_query);
+	$class_count_query_result = mysqli_query($conn, $class_count_query);
+	// print_r($class_count_query_result);
+	while($row = mysqli_fetch_array($class_count_query_result)) {
+		// print_r($row);
+		$classCount = $row['classesTotalstudents'];
+	}
+	// die($classCount);
+	// die($classCount . " " . $classCount+1);
+	$increasedClassCount = $classCount+1;
+	// die($increasedClassCount);
+	// die($classCount . ' ' . $increasedClassCount);
+	// now we have the value, let's update the class count
+	$update_class_count_query = "UPDATE classes SET classesTotalstudents =`{$increasedClassCount}` WHERE classesUid = {$studentClassUid}";
+	if (!$update_class_count_query) {
+            die("query failed" . mysqli_error($conn));
+        }
+    else {
+    	die("it worked");
+    }
+	// die($update_class_count_query);
+	$update_class_count_results = mysqli_query($conn, $update_class_count_query);
+
+
+
+
+
+
+
+
+	// create user needs to be last here
 	//when all the checks are passed
 	//we can take the results of the functions.inc.php 
 	//and pass them back into the create user function

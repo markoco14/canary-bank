@@ -85,7 +85,7 @@
 						<?php 
 							$teacherName = $_SESSION['useruid'];
 							//  WHERE classesTeacheruid = $_SESSION['useruid']
-							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = 'Markymark'";
+							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = '$teacherName'";
 							$results = mysqli_query($conn, $query);
 
 							while($row = mysqli_fetch_array($results)) {
@@ -100,7 +100,14 @@
 					<input type='text' name='name' placeholder='First name...'>
 					<input type='text' name='id' placeholder='Student ID...'>
 					<input type='text' name='age' placeholder='Age...'>
-					<input type='text' name='gender' placeholder='boy or girl...'>
+					<div>
+						<input type="radio" name="gender" value="boy">
+						<label for="boy">Boy</label>
+						<input type="radio" name="gender" value="girl">
+						<label for="girl">Girl</label>
+						<input type="radio" name="gender" value="other">
+						<label for="other">Other</label>
+					</div>
 					<input type='text' name='happyfaces' placeholder='How many happy faces do you have?...'>
 					<input type='text' name='tokens' placeholder='How many tokens do you have?...'>
 					<button type='submit' name='submit' class='add-class'>Sign Up</button>
@@ -152,7 +159,7 @@
 						<?php 
 							$teacherName = $_SESSION['useruid'];
 							//  WHERE classesTeacheruid = $_SESSION['useruid']
-							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = 'Markymark'";
+							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = '$teacherName'";
 							$results = mysqli_query($conn, $query);
 
 							while($row = mysqli_fetch_array($results)) {
