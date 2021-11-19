@@ -80,6 +80,12 @@ form {
 	background-color:var(--background);
 }
 
+.student-profiles-row {
+	display: flex;
+	justify-content: space-between;
+
+}
+
 .toggle-profiles-button-wrapper {
 	display: flex;
 }

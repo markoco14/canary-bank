@@ -96,16 +96,14 @@ if (isset($_POST["submit"])) {
 	// die($increasedClassCount);
 	// die($classCount . ' ' . $increasedClassCount);
 	// now we have the value, let's update the class count
-	$update_class_count_query = "UPDATE classes SET classesTotalstudents =`{$increasedClassCount}` WHERE classesUid = {$studentClassUid}";
-	if (!$update_class_count_query) {
-            die("query failed" . mysqli_error($conn));
-        }
-    else {
-    	die("it worked");
-    }
+	$update_class_count_query = "UPDATE classes SET classesTotalstudents = '$increasedClassCount' WHERE classesUid = '$studentClassUid'";
 	// die($update_class_count_query);
 	$update_class_count_results = mysqli_query($conn, $update_class_count_query);
 
+	if (!$update_class_count_results) {
+            die("query failed" . mysqli_error($conn));
+        }
+  
 
 
 

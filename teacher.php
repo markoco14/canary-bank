@@ -15,7 +15,7 @@
 				<h2>Hello, Teacher
 						<?php
 							if (isset($_SESSION["useruid"])) {
-								echo "<span id='name-span'>" . $_SESSION["useruid"] . "</span>";
+								echo "<span id='name-span'>" . $_SESSION["username"] . "</span>";
 							}
 						?>
 				</h2>
@@ -152,8 +152,8 @@
 				<option>Choose class:</option>
 			</select> -->
 			<section id='profile-container' class='profile-container'>
-				<form action="">
-					
+				<form action="" method="post">
+					<!-- includes/showStudentProfiles.inc.php -->
 					<select name="class" id="class-options">
 						<option value="None">Choose class</option>
 						<?php 
@@ -171,12 +171,35 @@
 
 						 ?>
 					</select>
-					<div class="toggle-profiles-button-wrapper">
+					<button type="submit" class="add-class" id="profiles" name="profiles">Show Profiles</button>
+					<!-- <div class="toggle-profiles-button-wrapper">
 						
 						<button id='show-profiles' class='add-class toggle-profiles-button'>Show Profiles</button>
 						<button id='hide-profiles' class='add-class toggle-profiles-button'>Hide Profiles</button>
-					</div>
+					</div> -->
 				</form>
+				<?php 
+					if (isset($_POST['profiles'])){
+						$classID = $_POST['class'];
+
+						$student_profiles_query = "SELECT * FROM `students` WHERE `studentsClassuid` = '$classID'";
+						$student_profiles_query_results = mysqli_query($conn, $student_profiles_query);
+						// print_r($student_profiles_query_results);
+
+						echo "<ul class=''>";
+						while($row = mysqli_fetch_assoc($student_profiles_query_results)) {
+							$student_name = $row['studentsName'];
+							$student_age = $row['studentsAge'];
+							$student_happy_face = $row['studentsFaces'];
+							$student_tokens = $row['studentsTokens'];
+							echo "<li class='student-profiles-row'>" . $student_name . ' Age: ' . $student_age .  ' Happy Faces: ' . $student_happy_face .  ' Tokens: ' . $student_tokens; 
+							echo "<button class='add-class'>Bank</button>";
+							echo "</li>";
+						}
+						echo "</ul>";
+					}
+
+				 ?>
 				<!--<div class='profile'>
 					<h3>Flatley</h3>
 					<img 
@@ -191,8 +214,8 @@
 			</section>
 		</main><!--End of nav-body-box-->
 
-<script src="js/showProfiles.js?<?php echo time(); ?>"></script>
-<script src="js/plusMinusTokens.js?<?php echo time(); ?>"></script> 
+<!-- <script src="js/showProfiles.js?<?php echo time(); ?>"></script> -->
+<!-- <script src="js/plusMinusTokens.js?<?php echo time(); ?>"></script>  -->
 <!-- <script src="js/fetchTeachersData.js?<?php echo time(); ?>"></script> -->
 <!--<script src="js/fetchStudentsData.js?<?php echo time(); ?>"></script>
 <script src="js/fetchClassesData.js?<?php echo time(); ?>"></script>-->
