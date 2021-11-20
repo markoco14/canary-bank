@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
 	$pwd = $_POST["password"];
 	$pwdRepeat = $_POST["pwdrepeat"];
 
-	require_once "dbh.inc.php";
+	require_once "../dbh.inc.php";
 	require_once "parentFunctions.inc.php";
 
 	//or you can have a parents table? 
@@ -21,13 +21,13 @@ if (isset($_POST["submit"])) {
 	}*/
 
 	if (emptyInputSignup($sid, $email, $pwd, $pwdRepeat) !== false) {
-		header("location: ../studentSignUp.php?error=emptyinput");
+		header("location: ../../studentSignUp.php?error=emptyinput");
 		exit();
 
 	}
 
 	if (invalidEmail($email) !== false) {
-		header("location: ../studentSignUp.php?error=invalidemail");
+		header("location: ../../studentSignUp.php?error=invalidemail");
 		exit();
 
 	}
@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
 
 	$result = mysqli_query($conn, "UPDATE students SET studentsEmail='$email', studentsPassword='$hashedPwd' WHERE studentsId='$sid'");
 	if ($result) {
-		header("location: ../studentSignUp.php?error=none");
+		header("location: ../../studentSignUp.php?error=none");
 	}
 
 	//check for errors

@@ -41,6 +41,28 @@ form {
 	width: 50%;
 	margin: auto;
 }
+
+/*teacher dashboard nav*/
+.dashboard-container {
+    display: flex;
+}
+.dashboard-nav {
+    margin-top: 1em;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.dashboard-nav li {
+    padding: 0.5em;
+}
+
 /*Teacher info section begins here*/
 .welcome-section {
 	text-align:center;

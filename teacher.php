@@ -1,7 +1,7 @@
 <?php
 	include_once 'header.php';
 	include_once 'includes/dbh.inc.php';
-	include_once 'includes/teacher_functions.inc.php';
+	include_once 'includes/teachers/teacher_functions.inc.php';
 	$userUid = $_SESSION['useruid'];
 	$userName = $_SESSION['useruid'];
 ?>
@@ -12,6 +12,15 @@
 	<!-- /head-->
 	<!-- body-->
 		<!--</nav>-->
+		<nav class="dashboard-nav">
+		    <ul>
+		        <li><a href="#">Home</a></li>
+		        <li><a href="create-classes">Classes</a></li>
+		        <li><a href="#">Students</a></li>
+		        <li><a href="#">Bank</a></li>
+		        <li><a href="#">Admin</a></li>
+		    </ul>
+		</nav>
 		<main class='container'>
 			<!--Teacher info section begins here -->
 			<section class='welcome-section'>
@@ -50,7 +59,7 @@
 				<h2>Your Classes</h2>
 				<p>Welcome to the Classes section. Manage all your classes and students here. Click "New Class" at the bottom if you want to create a new class. Your classes will appear below so you can sign up your students.</p>
 				<div>Placeholder section. The classes you make will appear here.</div><!--for class boxes-->
-				<form id="classForm" action="includes/addNewClass.inc.php" method="post">
+				<form id="classForm" action="includes/teachers/addNewClass.inc.php" method="post">
 					<input id="addClassName" type="text" name="classname" placeholder="Class name...">
 					<input id="addClassUid" type="text" name="classuid" placeholder="Unique class ID here...">
 					<button id="updateClasses" class='add-class' type="submit" name="submit">Add class</button>
@@ -90,7 +99,7 @@
 				<h2>Student Profiles</h2>
 				<p>...</p>
 				<h2>Open New Student Account</h2>
-				<form action='includes/newStudentSignup.inc.php' method='post'>
+				<form action='includes/teachers/newStudentSignup.inc.php' method='post'>
 					<select name="class" id="choose-class">
 						<option value="None">Choose class</option>
 						<?php 

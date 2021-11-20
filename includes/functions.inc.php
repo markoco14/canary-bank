@@ -198,14 +198,14 @@ function addNewClass($conn, $classname, $classuid) {
 	$sql = "INSERT INTO classes (classesName, classesUid, classesTeachername, classesTeacheruid) VALUES (?, ?, '".$teachername."', '".$teacheruid."');";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../teacher.php?error=stmtfailed");
+		header("location: ../../teacher.php?error=stmtfailed");
 		exit();
 	}
 	// "ss" because 2 parameters
 	mysqli_stmt_bind_param($stmt, "ss", $classname, $classuid);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../teacher.php?error=success");
+	header("location: ../../teacher.php?error=success");
 	exit();
 }
 
@@ -323,7 +323,7 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
 	$sql = "INSERT INTO students (studentsName, studentsId, studentsClass, studentsClassuid, studentsAge, studentsGender, studentsFaces, studentsTokens, studentsTeachername, studentsTeacheruid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '".$teachername."', '".$teacheruid."');";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../teacher.php?error=stmtfailed");
+		header("location: ../../teacher.php?error=stmtfailed");
 		exit();
 	}
 
@@ -331,7 +331,7 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
 	mysqli_stmt_bind_param($stmt, "ssssssss", $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../teacher.php?error=none");
+	header("location: ../../teacher.php?error=none");
 	exit();
 }
 

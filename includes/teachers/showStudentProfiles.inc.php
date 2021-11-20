@@ -1,6 +1,6 @@
 <?php
-require_once "dbh.inc.php";
-require_once "functions.inc.php";
+require_once "../dbh.inc.php";
+require_once "../functions.inc.php";
 
 
 if (isset($_POST['profiles'])){
@@ -20,10 +20,10 @@ if (isset($_POST['profiles'])){
 		echo "</li>";
 	}
 	echo "</ul>";
-	header("location: ../teacher.php?error=none");
+	header("location: ../../teacher.php?error=none");
 	exit();
 }  else {
-	header("location: ../teacher.php");
+	header("location: ../../teacher.php");
 	exit();
 }
 
