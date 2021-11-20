@@ -3,7 +3,7 @@
 ?>
 
 <section class="whole-content-box">
-	<form action="includes/parentSignUp.inc.php" method="post">
+	<form action="includes/parents/parentSignUp.inc.php" method="post">
 		<input type="text" name="studentid" placeholder="Student ID...">
 		<br>
 		<input type="text" name="email" placeholder="Email...">

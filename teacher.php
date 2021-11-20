@@ -190,6 +190,8 @@
 					}
 
 				 ?>
+				 <!-- I'm keeping this until I decide how I want to show the student profiles -->
+				 <!-- whether or not it is best to use jquery to manage student tokens -->
 				<!--<div class='profile'>
 					<h3>Flatley</h3>
 					<img 
@@ -203,37 +205,4 @@
 				</div>-->
 			</section>
 		</main><!--End of nav-body-box-->
-
-<!-- <script src="js/showProfiles.js?<?php echo time(); ?>"></script> -->
-<!-- <script src="js/plusMinusTokens.js?<?php echo time(); ?>"></script>  -->
-<!-- <script src="js/fetchTeachersData.js?<?php echo time(); ?>"></script> -->
-<!--<script src="js/fetchStudentsData.js?<?php echo time(); ?>"></script>
-<script src="js/fetchClassesData.js?<?php echo time(); ?>"></script>-->
-<!-- <script src="js/newStudentCuid.js?<?php echo time(); ?>"></script> -->
-<script>
-	
-	/*const myForm = document.getElementById("classForm");
-
-	myForm.addEventListener('submit', function(e) {
-		//prevent the form submitting as default
-		e.preventDefault();
-		//create a new form data object
-		const formData = new FormData(this);
-		//create Fetch request
-		fetch('includes/updateTeacherClasses.inc.php', {
-			method: 'post',
-			body: formData
-		}).then(function(response) {
-			return response.text();
-		}).then(function(text) {
-			console.log(text);
-		}).catch(function(error) {
-			console.log(error);
-		})
-	});*/
-
-</script>
-
-
-
 </body>
