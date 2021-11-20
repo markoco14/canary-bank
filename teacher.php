@@ -1,6 +1,9 @@
 <?php
 	include_once 'header.php';
 	include_once 'includes/dbh.inc.php';
+	include_once 'includes/teacher_functions.inc.php';
+	$userUid = $_SESSION['useruid'];
+	$userName = $_SESSION['useruid'];
 ?>
 
 
@@ -69,6 +72,14 @@
 						}
 					?>
 				</form>
+				<article>
+					<h2>Your classes</h2>
+					<div class="class-thumbnail-container">
+					 <?php 
+					 	displayClassList();
+					  ?>
+					</div>
+				</article>
 			</section>
 			<!-----------------  ------------------>
 			<!-----------------  ------------------>
@@ -83,29 +94,18 @@
 					<select name="class" id="choose-class">
 						<option value="None">Choose class</option>
 						<?php 
-							$teacherName = $_SESSION['useruid'];
-							//  WHERE classesTeacheruid = $_SESSION['useruid']
-							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = '$teacherName'";
-							$results = mysqli_query($conn, $query);
-
-							while($row = mysqli_fetch_array($results)) {
-								$classID = $row['classesUid'];
-								$className = $row['classesName'];
-
-								echo "<option value={$classID}>{$className}</option>";
-							}
-
+							fillstudentRegistrationSelectorWithClasses();
 						 ?>
 					</select>
 					<input type='text' name='name' placeholder='First name...'>
 					<input type='text' name='id' placeholder='Student ID...'>
 					<input type='text' name='age' placeholder='Age...'>
 					<div>
-						<input type="radio" name="gender" value="boy">
+						<input type="radio" name="gender" value="boy" id="boy">
 						<label for="boy">Boy</label>
-						<input type="radio" name="gender" value="girl">
+						<input type="radio" name="gender" value="girl" id="girl">
 						<label for="girl">Girl</label>
-						<input type="radio" name="gender" value="other">
+						<input type="radio" name="gender" value="other" id="other">
 						<label for="other">Other</label>
 					</div>
 					<input type='text' name='happyfaces' placeholder='How many happy faces do you have?...'>
@@ -152,26 +152,16 @@
 				<option>Choose class:</option>
 			</select> -->
 			<section id='profile-container' class='profile-container'>
+				<h2>Banking</h2>
 				<form action="" method="post">
 					<!-- includes/showStudentProfiles.inc.php -->
 					<select name="class" id="class-options">
 						<option value="None">Choose class</option>
-						<?php 
-							$teacherName = $_SESSION['useruid'];
-							//  WHERE classesTeacheruid = $_SESSION['useruid']
-							$query = "SELECT * FROM classes WHERE `classesTeacheruid` = '$teacherName'";
-							$results = mysqli_query($conn, $query);
-
-							while($row = mysqli_fetch_array($results)) {
-								$classID = $row['classesUid'];
-								$className = $row['classesName'];
-
-								echo "<option value={$classID}>{$className}</option>";
-							}
-
-						 ?>
+						 <?php 
+						 	fillBankingSelectorWithStudents();
+						  ?>
 					</select>
-					<button type="submit" class="add-class" id="profiles" name="profiles">Show Profiles</button>
+					<button type="submit" class="add-class" id="profiles" name="profiles">Show Profiles</button>	
 					<!-- <div class="toggle-profiles-button-wrapper">
 						
 						<button id='show-profiles' class='add-class toggle-profiles-button'>Show Profiles</button>

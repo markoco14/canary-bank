@@ -216,7 +216,7 @@ function addNewClass($conn, $classname, $classuid) {
 
 function emptyStudentInfo($name, $id, $class, $age, $gender, $happyFaces, $tokens) {
 	$result;
-	if (empty($name) || empty($id) || empty($class) || empty($age) || empty($gender) || empty($happyFaces) || empty($tokens)) {
+	if (empty($name) || empty($id) || empty($class) || empty($age)|| empty($gender) || empty($happyFaces) || empty($tokens)) {
 		$result = true;
 	} else {
 		$result = false;
@@ -244,15 +244,20 @@ function invalidClass($class) {
 	return $result;
 }
 
-/*function invalidGender($gender) {
+function invalidGender($gender) {
 	$result;
-	if ($gender !== "boy" || $gender !== "Boy" || $gender !== "girl" || $gender !== "Girl") {
+	// if ($gender !== "boy" || $gender !== "girl" || $gender !== "other") {
+	// 	$result = true;
+	// } else {
+	// 	$result = false;
+	// }
+	if (empty($gender)){
 		$result = true;
-	} else {
+	} else{
 		$result = false;
 	}
 	return $result;
-}*/
+}
 
 function ageNotNumber($age) {
 	$result;

@@ -31,7 +31,10 @@ if (isset($_POST["submit"])) {
 	}
 	
 	//check for errors
-	
+	if (emptyStudentInfo($studentName, $studentId, $studentClassUid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens) !== false) {
+		header("location: ../teacher.php?error=emptyinput");
+		exit();
+	}
 
 	if (invalidStudentId($studentId) !== false) {
 		header("location: ../teacher.php?error=invalidstudentid");
@@ -43,10 +46,13 @@ if (isset($_POST["submit"])) {
 		exit();
 	}
 
-	/*if (invalidGender($gender) !== false) {
-		header("location: ../teacher.php?error=invalidgender");
-		exit();
-	}*/
+	// gender check no longer necessary because the empty input sign up does it.
+	// but it would be nice to improve the UX by separating the gender check out of the empty input sign up
+	// because then we could give more specific guidance to the user about which input is empty
+	// if (invalidGender($gender) !== false) {
+	// 	header("location: ../teacher.php?error=invalidgender");
+	// 	exit();
+	// }
 
 	if (ageNotNumber($studentAge) !== false) {
 		header("location: ../teacher.php?error=agenotnumber");
