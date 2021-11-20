@@ -3,7 +3,7 @@
 	include_once 'includes/dbh.inc.php';
 	include_once 'includes/teachers/teacher_functions.inc.php';
 	$userUid = $_SESSION['useruid'];
-	$userName = $_SESSION['useruid'];
+	$userName = $_SESSION['username'];
 ?>
 
 
@@ -24,13 +24,9 @@
 		<main class='container'>
 			<!--Teacher info section begins here -->
 			<section class='welcome-section'>
-				<h2>Hello, Teacher
-						<?php
-							if (isset($_SESSION["useruid"])) {
-								echo "<span id='name-span'>" . $_SESSION["username"] . "</span>";
-							}
-						?>
-				</h2>
+				<?php 
+					welcomeTeacher();
+				 ?>
 				<p>Welcome to the Canary Bank -- the safest place for your students to save their Canary Tokens and build their futures. Help your students open an account and manage their savings all in one place.</p>
 			</section>
 			<section class='info-container'>

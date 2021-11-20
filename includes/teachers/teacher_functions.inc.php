@@ -1,5 +1,16 @@
 <?php 
 
+function welcomeTeacher() {
+	global $userUid;
+	global $userName;
+	echo "<h2>";
+	echo "Hello, Teacher ";
+	if (isset($userUid)) {
+		echo "<span id='name-span'>" . $userName . "</span>";
+	}
+	echo "</h2>";
+}
+
 
 function displayClassList() {
 	global $userUid;
