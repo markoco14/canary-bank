@@ -173,9 +173,17 @@
 						<button id='hide-profiles' class='add-class toggle-profiles-button'>Hide Profiles</button>
 					</div> -->
 				</form>
+
 				<?php 
 					if (isset($_POST['profiles'])){
+						showStudentProfiles();
+					}
+
+				?>
+				<?php 
+					function showStudentProfiles(){
 						$classID = $_POST['class'];
+						global $conn;
 
 						$student_profiles_query = "SELECT * FROM `students` WHERE `studentsClassuid` = '$classID'";
 						$student_profiles_query_results = mysqli_query($conn, $student_profiles_query);
@@ -187,14 +195,23 @@
 							$student_age = $row['studentsAge'];
 							$student_happy_face = $row['studentsFaces'];
 							$student_tokens = $row['studentsTokens'];
-							echo "<li class='student-profiles-row'>" . $student_name . ' Age: ' . $student_age .  ' Happy Faces: ' . $student_happy_face .  ' Tokens: ' . $student_tokens; 
-							echo "<button class='add-class'>Bank</button>";
-							echo "</li>";
-						}
-						echo "</ul>";
-					}
+				?>
+							<li class='student-profiles-row'>
+								<p>Name: <?php echo $student_name; ?></p>
+								<p>Age: <?php echo $student_age; ?></p>
+								<p>Happy Faces: <?php echo $student_happy_face; ?></p>
+								<p>Tokens: <?php echo $student_tokens; ?></p>
+								<button class='add-class'>Bank</button>
+							</li>
 
-				 ?>
+							<!-- echo "<li class='student-profiles-row'>" . $student_name . ' Age: ' . $student_age .  ' Happy Faces: ' . $student_happy_face .  ' Tokens: ' . $student_tokens; 
+							echo "<button class='add-class'>Bank</button>";
+							echo "</li>"; -->
+						<?php  } ?>
+						</ul>
+
+					<?php } ?>	
+
 				 <!-- I'm keeping this until I decide how I want to show the student profiles -->
 				 <!-- whether or not it is best to use jquery to manage student tokens -->
 				<!--<div class='profile'>
