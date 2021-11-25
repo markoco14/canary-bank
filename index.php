@@ -1,6 +1,7 @@
 <?php
 	include_once 'header.php';
 ?>
+			
 			<!--</nav>-->
 			<section class='whole-content-box'>
 				<h2>Welcome to the Canary Bank</h2>

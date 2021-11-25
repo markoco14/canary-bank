@@ -1,8 +1,9 @@
 <?php
 
-require_once "../dbh.inc.php";
+require_once '../../includes/dbh.inc.php';
 
-require_once "../functions.inc.php";
+// require_once "../functions.inc.php";
+require_once 'teacher_functions.inc.php';
 
 if (isset($_POST["submit"])) {
 
@@ -25,17 +26,17 @@ if (isset($_POST["submit"])) {
 	
 	//check for errors
 	if (emptyStudentInfo($studentName, $studentId, $studentClassUid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens) !== false) {
-		header("location: ../../teacher.php?error=emptyinput");
+		header("location: ../teacher.php?error=emptyinput");
 		exit();
 	}
 
 	if (invalidStudentId($studentId) !== false) {
-		header("location: ../../teacher.php?error=invalidstudentid");
+		header("location: ../teacher.php?error=invalidstudentid");
 		exit();
 	}
 
 	if (invalidClass($studentClassName) !== false) {
-		header("location: ../../teacher.php?error=invalidclass");
+		header("location: ../teacher.php?error=invalidclass");
 		exit();
 	}
 
@@ -48,23 +49,23 @@ if (isset($_POST["submit"])) {
 	// }
 
 	if (ageNotNumber($studentAge) !== false) {
-		header("location: ../../teacher.php?error=agenotnumber");
+		header("location: ../students.php?error=agenotnumber");
 		exit();
 	}
 
 	if (facesNotNumber($studentHappyFaces) !== false) {
-		header("location: ../../teacher.php?error=facesnotnumber");
+		header("location: ../students.php?error=facesnotnumber");
 		exit();
 	}
 
 	if (tokensNotNumber($studentTokens) !== false) {
-		header("location: ../../teacher.php?error=tokensnotnumber");
+		header("location: ../students.php?error=tokensnotnumber");
 		exit();
 	}
 
 
 	if (studentIdExists($conn, $studentId) !== false) {
-		header("location: ../../teacher.php?error=studentidtaken");
+		header("location: ../students.php?error=studentidtaken");
 		exit();
 	}
 
@@ -90,6 +91,6 @@ if (isset($_POST["submit"])) {
 	//and pass them back into the create user function
 	newStudentAccount($conn, $studentName, $studentId, $studentClassName, $studentClassUid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens);
 } else {
-	header("location: ../../teacher.php");
+	header("location: ../students.php");
 	exit();
 }

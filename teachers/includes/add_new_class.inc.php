@@ -13,8 +13,9 @@ if (isset($_POST["submit"])) {
 	$classname = $_POST["classname"];
 	$classuid = $_POST["classuid"];
 	//in the end I needed both dbh and functions files
-	require_once '../dbh.inc.php';
-	require_once '../functions.inc.php';
+	require_once '../../includes/dbh.inc.php';
+	// require_once '../../includes/functions.inc.php';
+	require_once 'teacher_functions.inc.php';
 
 	//now we need to check for errors
 	//just like the sign up page

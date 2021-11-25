@@ -1,7 +1,7 @@
 <?php
-	include_once 'header.php';
-	include_once 'includes/dbh.inc.php';
-	include_once 'includes/teachers/teacher_functions.inc.php';
+	include_once 'teacher_header.php';
+	include_once '../includes/dbh.inc.php';
+	include_once 'includes/teacher_functions.inc.php';
 	$userUid = $_SESSION['useruid'];
 	$userName = $_SESSION['username'];
 ?>
@@ -14,10 +14,10 @@
 		<!--</nav>-->
 		<nav class="dashboard-nav">
 		    <ul>
-		        <li><a href="#">Home</a></li>
-		        <li><a href="create-classes">Classes</a></li>
-		        <li><a href="#">Students</a></li>
-		        <li><a href="#">Bank</a></li>
+		        <li><a href="teacher.php">Home</a></li>
+		        <li><a href="classes.php">Classes</a></li>
+		        <li><a href="students.php">Students</a></li>
+		        <li><a href="bank.php">Bank</a></li>
 		        <li><a href="#">Admin</a></li>
 		    </ul>
 		</nav>
@@ -55,7 +55,7 @@
 				<h2>Your Classes</h2>
 				<p>Welcome to the Classes section. Manage all your classes and students here. Click "New Class" at the bottom if you want to create a new class. Your classes will appear below so you can sign up your students.</p>
 				<div>Placeholder section. The classes you make will appear here.</div><!--for class boxes-->
-				<form id="classForm" action="includes/teachers/addNewClass.inc.php" method="post">
+				<form id="classForm" action="includes/add_new_class.inc.php" method="post">
 					<input id="addClassName" type="text" name="classname" placeholder="Class name...">
 					<input id="addClassUid" type="text" name="classuid" placeholder="Unique class ID here...">
 					<button id="updateClasses" class='add-class' type="submit" name="submit">Add class</button>
@@ -95,7 +95,7 @@
 				<h2>Student Profiles</h2>
 				<p>...</p>
 				<h2>Open New Student Account</h2>
-				<form action='includes/teachers/newStudentSignup.inc.php' method='post'>
+				<form action='includes/add_new_student.inc.php' method='post'>
 					<select name="class" id="choose-class">
 						<option value="None">Choose class</option>
 						<?php 
@@ -180,37 +180,7 @@
 					}
 
 				?>
-				<?php 
-					function showStudentProfiles(){
-						$classID = $_POST['class'];
-						global $conn;
-
-						$student_profiles_query = "SELECT * FROM `students` WHERE `studentsClassuid` = '$classID'";
-						$student_profiles_query_results = mysqli_query($conn, $student_profiles_query);
-						// print_r($student_profiles_query_results);
-
-						echo "<ul class=''>";
-						while($row = mysqli_fetch_assoc($student_profiles_query_results)) {
-							$student_name = $row['studentsName'];
-							$student_age = $row['studentsAge'];
-							$student_happy_face = $row['studentsFaces'];
-							$student_tokens = $row['studentsTokens'];
-				?>
-							<li class='student-profiles-row'>
-								<p>Name: <?php echo $student_name; ?></p>
-								<p>Age: <?php echo $student_age; ?></p>
-								<p>Happy Faces: <?php echo $student_happy_face; ?></p>
-								<p>Tokens: <?php echo $student_tokens; ?></p>
-								<button class='add-class'>Bank</button>
-							</li>
-
-							<!-- echo "<li class='student-profiles-row'>" . $student_name . ' Age: ' . $student_age .  ' Happy Faces: ' . $student_happy_face .  ' Tokens: ' . $student_tokens; 
-							echo "<button class='add-class'>Bank</button>";
-							echo "</li>"; -->
-						<?php  } ?>
-						</ul>
-
-					<?php } ?>	
+				
 
 				 <!-- I'm keeping this until I decide how I want to show the student profiles -->
 				 <!-- whether or not it is best to use jquery to manage student tokens -->

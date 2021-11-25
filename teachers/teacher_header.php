@@ -7,8 +7,8 @@
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width initial-scale=1.0 shrink-to-fit=no'>
 		<title>Canary Bank</title>
-		<link href='css/bankStyle.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
-		<link href='css/headerStyles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
+		<link href='../css/bankStyle.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
+		<link href='../css/headerStyles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
 		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>
@@ -24,7 +24,7 @@
 						echo "<li><a href='profile.php'>Students</a></li>";
 						echo "<li><a href='graph.php'>Charts</a></li>";
 						echo "<li><a href='profile.php'>Profile</a></li>";
-						echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+						echo "<li><a href='../includes/logout.inc.php'>Log out</a></li>";
 					}
 					else {
 						echo "<li><a href='index.php'>Home</a></li>";
@@ -39,8 +39,4 @@
 			<span></span>
 		</label>
 		</header>
-		<!-- test the image file to get the sizing
-			and mobile responsiveness right
-		 -->
-		<!-- <img class="header-image" src="images/canary-hero.jpg" alt="A canary sits on a branch amidst small pink leaves."> -->
-		<section class='nav-body-box'>
+		<main class="nav-body-box">
