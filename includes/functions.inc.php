@@ -162,3 +162,27 @@ function loginUser($conn, $username, $pwd) {
 	header("location: ../teacher.php?error=none");
 	exit();
 }*/
+
+// LANDING PAGE FUNCTIONS FOR STUDENTS/PARENTS
+
+function setStudentLoginEmptyInput($sid, $email, $pwd, $pwdRepeat) {
+	$result;
+	if (empty($sid) || empty($email) || empty($pwd) || empty($pwdRepeat)) {
+		$result = true;
+	} else {
+		$result = false;
+	}
+	return $result;
+}
+
+//check for invalid email
+function setStudentLoginInvalidEmail($email) {
+	$result;
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$result = true;
+	} else {
+		$result = false;
+	}
+	return $result;
+}
+
