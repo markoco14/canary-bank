@@ -9,7 +9,7 @@
 					<div class='login-option'>
 						<h3>Students</h3>
 						<p>Are you a student in Canary class or a parent?</p>
-						<p>If it is your first visit, get started at the student <a href="studentSignUp.php"> Sign in here.</a></p>
+						<p>If it is your first visit, get started at the student <a href="students.php"> Sign in here.</a></p>
 						<p>Have a profile? Log in to check your bank balance.</p>
 					</div>
 					<div class='login-option'>
