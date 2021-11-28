@@ -26,15 +26,15 @@ if (isset($_POST["student-log-in"])) {
     //now we need to check for errors
     //just like the sign up page
 
-    if (emptyInputLogin($username, $pwd) !== false) {
-        header("location: ../login.php?error=emptyinput");
+    if (studentLoginEmptyInput($username, $pwd) !== false) {
+        header("location: ../../students.php?loginfail=emptyinput");
         exit();
     }
 
     //call the log in user function
-    loginUser($conn, $username, $pwd);
+    loginStudent($conn, $username, $pwd);
 }
 else {
-    header("location: ../index.php");
+    header("location: ../../students.php");
         exit();
 }

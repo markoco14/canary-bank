@@ -186,3 +186,72 @@ function setStudentLoginInvalidEmail($email) {
 	return $result;
 }
 
+function studentUidExists($conn, $username, $email) {
+	$sql = "SELECT * FROM students WHERE studentsId = ? OR studentsEmail = ?;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		header("location: ../../students.php?loginfail=stmtfailed");
+		exit();
+	}
+
+	mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+	mysqli_stmt_execute($stmt);
+
+	$resultData = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($resultData)) {
+		return $row;
+	} 
+	else {
+		$result = false;
+		return $result;
+	}
+
+	mysqli_stmt_close($stmt);
+}
+
+//we are creating log in functions
+function studentLoginEmptyInput($username, $pwd) {
+	$result;
+	if (empty($username) || empty($pwd)) {
+		$result = true;
+	} else {
+		$result = false;
+	}
+	return $result;
+}
+
+
+function loginStudent($conn, $username, $pwd) {
+	//we are using $username twice because the second one 
+	//is replacing $email
+	//then the program will automatically fit the log in username
+	//into the database existing username or email
+	$studentUidExists = studentUidExists($conn, $username, $username);
+
+	//check if this function returns as false
+	if ($studentUidExists === False) {
+		header("location: ../../students.php?loginfail=wronglogin");
+		exit();
+	}
+
+	//now we need to check the password with the hashed password
+	$pwdHashed = $studentUidExists["studentsPassword"];
+	$checkPwd = password_verify($pwd, $pwdHashed);
+
+	if ($checkPwd === false) {
+		header("location: ../../students.php?loginfail=wronglogin");
+		exit();
+	}
+	else if ($checkPwd === true) {
+		session_start();
+		$_SESSION["id"] = $studentUidExists['studentsDataID'];
+		$_SESSION["studentuid"] = $studentUidExists['studentsId'];
+		$_SESSION["studentname"] = $studentUidExists['studentsName'];
+		// $_SESSION["id"] = $uidExists["usersId"];
+		// $_SESSION["useruid"] = $uidExists["usersUid"];
+		// $_SESSION["username"] = $uidExists["usersName"];
+		header("location: ../../students/student.php");
+		exit();
+	}
+}

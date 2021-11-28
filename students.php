@@ -58,4 +58,21 @@
 			<button type="submit" name="student-log-in">Log In</button>
 		</div>
 	</form>
+	<?php 
+		if(isset($_GET['loginfail'])) {
+			$error = $_GET['loginfail'];
+			if ($error == 'emptyinput') {
+				echo "<p>You forgot to fill in one of the inputs. Please try again.</p>";
+			}
+			if ($error == 'stmtfailed') {
+				echo "<p>There is an error. Please contact support for help.</p>";
+			}
+			if ($error == 'wronglogin') {
+				echo "<p>The password or username you have entered is incorrect. Please try again.</p>";
+			}
+			if ($error == 'none') {
+				echo "<p>You have successfully signed up! You may log in if you're ready.</p>";
+			}
+		}
+	 ?>
 </section>
