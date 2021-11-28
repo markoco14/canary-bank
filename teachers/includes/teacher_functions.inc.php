@@ -364,7 +364,7 @@ function showStudentDashboard(){
 				<tr>
 					<td><?php echo $student_name; ?></td>
 					<td><?php echo $student_age; ?></td>
-				<td><?php echo $student_gender ?></td>
+					<td><?php echo $student_gender ?></td>
 					<td><?php echo $student_happy_face; ?></td>
 					<td><?php echo $student_tokens; ?></td>
 					<td>Delete</td>
