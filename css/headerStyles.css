@@ -7,14 +7,24 @@ header {
 	height:80px;
 }
 
+
+
 .header-image {
 	object-fit: cover;
 	width: 100vw;
 	height: 100vh;
 }
 
+
+
+.teacher-header {
+	display: flex;
+	justify-content: space-between;
+}
+
 .logo {
 	line-height:80px;
+	margin-left: 1em;
 }
 
 .nav-toggle {
@@ -100,7 +110,7 @@ nav a:hover {
 	transition: opacity 250ms ease-in-out 250ms;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 750px) {
 	.nav-toggle-label {
 		display:none;
 	}
@@ -111,7 +121,7 @@ nav a:hover {
 	}
 
 	.logo {
-		margin-left:25px;
+		margin-left:1em;
 	}
 
 	.nav {

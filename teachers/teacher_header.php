@@ -12,7 +12,7 @@
 		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>
-		<header>
+		<header class="teacher-header">
 		<h1 class='logo'>Canary Bank</h1>
 		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
 		<nav class='nav'>
@@ -21,9 +21,11 @@
 //I probably need to add another conditional
 //to handle the session with a studentid.
 					if (isset($_SESSION["useruid"])) {
-						echo "<li><a href='profile.php'>Students</a></li>";
-						echo "<li><a href='graph.php'>Charts</a></li>";
-						echo "<li><a href='profile.php'>Profile</a></li>";
+						// echo "<li><a href='teacher.php'>Home</a></li>";
+						// echo "<li><a href='classes.php'>Classes</a></li>";
+						// echo "<li><a href='students.php'>Students</a></li>";
+						// echo "<li><a href='bank.php'>Bank</a></li>";
+						// echo "<li><a href='#'>Admin</a></li>";
 						echo "<li><a href='../includes/logout.inc.php'>Log out</a></li>";
 					}
 					else {
@@ -38,5 +40,7 @@
 		<label for='nav-toggle' class='nav-toggle-label'>
 			<span></span>
 		</label>
+		
+
 		</header>
-		<main class="main">
+		<main class="dashboard">

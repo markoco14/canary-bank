@@ -12,7 +12,7 @@
 		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>
-		<header>
+		<header class="landing-header">
 		<h1 class='logo'>Canary Bank</h1>
 		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
 		<nav class='nav'>
@@ -20,18 +20,22 @@
 				<?php
 //I probably need to add another conditional
 //to handle the session with a studentid.
-					if (isset($_SESSION["useruid"])) {
-						echo "<li><a href='profile.php'>Students</a></li>";
-						echo "<li><a href='graph.php'>Charts</a></li>";
-						echo "<li><a href='profile.php'>Profile</a></li>";
-						echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
-					}
-					else {
-						echo "<li><a href='index.php'>Home</a></li>";
+				echo "<li><a href='index.php'>Home</a></li>";
 						echo "<li><a href='contact.php'>Contact</a></li>";
 						echo "<li><a href='signup.php'>Signup</a></li>";
 						echo "<li><a href='login.php'>Login</a></li>";
-					}
+					// if (isset($_SESSION["useruid"])) {
+					// 	echo "<li><a href='profile.php'>Students</a></li>";
+					// 	echo "<li><a href='graph.php'>Charts</a></li>";
+					// 	echo "<li><a href='profile.php'>Profile</a></li>";
+					// 	echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+					// }
+					// else {
+					// 	echo "<li><a href='index.php'>Home</a></li>";
+					// 	echo "<li><a href='contact.php'>Contact</a></li>";
+					// 	echo "<li><a href='signup.php'>Signup</a></li>";
+					// 	echo "<li><a href='login.php'>Login</a></li>";
+					// }
 				?>
 			</ul>
 		</nav>

@@ -14,14 +14,10 @@
         <li><a href="#">Admin</a></li>
     </ul>
 </nav>
-<div class="content-container">
-	<section>
-		<h2>Student Profiles</h2>
-		<p>...</p>
-	</section>
-	<section>
+<div class="dashboard-content-container">
+	<section class="section">
 		<h2>Open New Student Account</h2>
-		<form action='includes/add_new_student.inc.php' method='post'>
+		<form class="form" action='includes/add_new_student.inc.php' method='post'>
 			<select name="class" id="choose-class">
 				<option value="None">Choose class</option>
 				<?php 
@@ -79,9 +75,9 @@
 		</form>
 	</section>
 
-	<section>
+	<section class="section">
 		<h2>Class List</h2>
-		<form action='' method='post'>
+		<form class="form" action='' method='post'>
 			<select name="class" id="choose-class">
 				<option value="None">Choose class</option>
 				<?php 

@@ -14,12 +14,12 @@
         <li><a href="#">Admin</a></li>
     </ul>
 </nav>
-<div class="content-container">
-	<section>
+<div class="dashboard-content-container">
+	<section class="section">
 		<h2>Your Classes</h2>
 		<p>Welcome to the Classes section. Manage all your classes and students here. Click "New Class" at the bottom if you want to create a new class. Your classes will appear below so you can sign up your students.</p>
 		<div>Placeholder section. The classes you make will appear here.</div><!--for class boxes-->
-		<form id="classForm" action="includes/add_new_class.inc.php" method="post">
+		<form class="form" id="classForm" action="includes/add_new_class.inc.php" method="post">
 			<input id="addClassName" type="text" name="classname" placeholder="Class name...">
 			<input id="addClassUid" type="text" name="classuid" placeholder="Unique class ID here...">
 			<button id="updateClasses" class='add-class' type="submit" name="submit">Add class</button>

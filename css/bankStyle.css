@@ -24,18 +24,15 @@ canary yellow
 body {
 	margin:0px;
 	padding:0px;
+	box-sizing: border-box;
 }
 
-/*main {
-	margin-bottom: 500px;
-}*/
-
-section {
+.section {
 	/*min-height: 50vh;*/
 	margin-top: 2rem;
 }
 
-form {
+.form {
 	display: flex;
 	flex-direction: column;
 	width: 50%;
@@ -43,48 +40,75 @@ form {
 }
 
 /*teacher dashboard nav*/
-.dashboard-container {
+/*.dashboard-container {
     display: flex;
-}
+    flex-direction: column;
+}*/
 .dashboard-nav {
-    margin-top: 1em;
-    width: 150px;
-    display: flex;
-    justify-content: center;
+    /*margin-top: 1em;*/
+    border-bottom: 2px solid black;
 }
 
 .dashboard-nav ul {
+	display: flex;
+	justify-content: center;
     margin: 0px;
     padding: 0px;
     list-style: none;
+    width: 100%;
 }
 
 .dashboard-nav li {
     padding: 0.5em;
 }
 
-/*Teacher info section begins here*/
-.welcome-section {
-	text-align:center;
-}
-/*Service info section begins here*/
-.info-container {
+.dashboard-content-container {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	margin: auto;
+	width: 95%;
+	max-width: 800px;
+}
+
+
+/*Service info section begins here*/
+.teacher-info-container {
+	display: flex;
+	/*justify-content: center;*/
 	align-items: top;
 	flex-wrap:wrap;
+	gap: 1em;
 }
 
-.info-item {
-	margin:10px 5px;
-	width:80%;
-	min-width:100px;
+@media (min-width: 650px) {
+	.teacher-info-card {
+		width: 30%;
+	}
 }
 
-.info-item h2,h3 {
-	text-align:center;
+.teacher-info-card img {
+	object-fit: cover;
+	/*height: 200px;*/
+	width: 100%;
+	max-width: 400px;
 }
 
+@media (min-width: 650px) {
+	.teacher-info-card img {
+		object-fit: cover;
+		height: 200px;
+	}
+}
+
+.large-screen-break {
+	display: none;
+}
+
+@media (min-width: 650px) {
+	.large-screen-break {
+		display: block;
+	}
+}
 /*The Add/View Class section begins here*/
 
 .create-classes-section {
@@ -125,10 +149,6 @@ form {
 	display:flex;
 }
 
-.content-container {
-	display: flex;
-	flex-direction: column;
-}
 
 /*WRAP ALL THE BODY CONTENT IN ONE CONTAINER*/
 /*SEPARATES BOD CONTENT FROM NAV ON LEFT*/
