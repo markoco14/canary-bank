@@ -1,4 +1,3 @@
-
 <?php
 	include_once 'teacher_header.php';
 	include_once '../includes/dbh.inc.php';
@@ -6,11 +5,6 @@
 	$userUid = $_SESSION['useruid'];
 	$userName = $_SESSION['username'];
 ?>
-
-<!-----------------  ------------------>
-<!-- CREATE NEW STUDENT SECTION HERE -->
-<!-----------------  ------------------>
-<!-----------------  ------------------>
 <nav class="dashboard-nav">
     <ul>
         <li><a href="teacher.php">Home</a></li>
@@ -20,7 +14,7 @@
         <li><a href="#">Admin</a></li>
     </ul>
 </nav>
-<main>
+<div class="content-container">
 	<section>
 		<h2>Your Classes</h2>
 		<p>Welcome to the Classes section. Manage all your classes and students here. Click "New Class" at the bottom if you want to create a new class. Your classes will appear below so you can sign up your students.</p>
@@ -56,4 +50,5 @@
 			</div>
 		</article>
 	</section>
-</main>
+</div>
+<?php include_once 'teacher_footer.php'; ?>

@@ -39,4 +39,4 @@
 			<span></span>
 		</label>
 		</header>
-		<main class="nav-body-box">
+		<main class="main">

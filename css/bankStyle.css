@@ -26,9 +26,9 @@ body {
 	padding:0px;
 }
 
-main {
+/*main {
 	margin-bottom: 500px;
-}
+}*/
 
 section {
 	/*min-height: 50vh;*/
@@ -121,8 +121,13 @@ form {
 }
 
 /*THIS BOX WRAPS THE NAV AND BODY CONTENT TOGETHER*/
-.nav-body-box {
+.main {
 	display:flex;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
 }
 
 /*WRAP ALL THE BODY CONTENT IN ONE CONTAINER*/

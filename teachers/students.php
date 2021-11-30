@@ -1,4 +1,3 @@
-
 <?php
 	include_once 'teacher_header.php';
 	include_once '../includes/dbh.inc.php';
@@ -6,11 +5,6 @@
 	$userUid = $_SESSION['useruid'];
 	$userName = $_SESSION['username'];
 ?>
-
-<!-----------------  ------------------>
-<!-- CREATE NEW STUDENT SECTION HERE -->
-<!-----------------  ------------------>
-<!-----------------  ------------------>
 <nav class="dashboard-nav">
     <ul>
         <li><a href="teacher.php">Home</a></li>
@@ -20,7 +14,7 @@
         <li><a href="#">Admin</a></li>
     </ul>
 </nav>
-<main>
+<div class="content-container">
 	<section>
 		<h2>Student Profiles</h2>
 		<p>...</p>
@@ -83,11 +77,9 @@
 				}
 			?>
 		</form>
-
 	</section>
 
 	<section>
-		
 		<h2>Class List</h2>
 		<form action='' method='post'>
 			<select name="class" id="choose-class">
@@ -97,24 +89,13 @@
 				 ?>
 			</select>
 			<button type="submit" class="add-class" id="profiles" name="profiles">Show Profiles</button>	
-			<!-- <div class="toggle-profiles-button-wrapper">
-				
-				<button id='show-profiles' class='add-class toggle-profiles-button'>Show Profiles</button>
-				<button id='hide-profiles' class='add-class toggle-profiles-button'>Hide Profiles</button>
-			</div> -->
 		</form>
+		<?php 
+			if (isset($_POST['profiles'])){
+				showStudentDashboard();
+			}
 
-		
-
-				
-				<?php 
-					if (isset($_POST['profiles'])){
-						showStudentDashboard();
-					}
-
-				?>
-
-		
+		?>		
 	</section>
-
-</main>
+</div>
+<?php include_once 'teacher_footer.php'; ?>
