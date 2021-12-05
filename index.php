@@ -89,4 +89,4 @@
 	?>
 </section><!--End of nav-body-box-->
 
-</body>
+<?php include_once "footer.php" ?>

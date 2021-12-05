@@ -13,35 +13,45 @@
 	</head>
 	<body>
 		<header class="landing-header">
-		<h1 class='logo'>Canary Bank</h1>
-		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
-		<nav class='nav'>
-			<ul>
-				<?php
-//I probably need to add another conditional
-//to handle the session with a studentid.
-				echo "<li><a href='index.php'>Home</a></li>";
-						echo "<li><a href='contact.php'>Contact</a></li>";
-						echo "<li><a href='signup.php'>Signup</a></li>";
-						echo "<li><a href='login.php'>Login</a></li>";
-					// if (isset($_SESSION["useruid"])) {
-					// 	echo "<li><a href='profile.php'>Students</a></li>";
-					// 	echo "<li><a href='graph.php'>Charts</a></li>";
-					// 	echo "<li><a href='profile.php'>Profile</a></li>";
-					// 	echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
-					// }
-					// else {
-					// 	echo "<li><a href='index.php'>Home</a></li>";
-					// 	echo "<li><a href='contact.php'>Contact</a></li>";
-					// 	echo "<li><a href='signup.php'>Signup</a></li>";
-					// 	echo "<li><a href='login.php'>Login</a></li>";
-					// }
-				?>
-			</ul>
-		</nav>
-		<label for='nav-toggle' class='nav-toggle-label'>
-			<span></span>
-		</label>
+			<!-- <div class="flex-row"> -->
+				<div class="header-topline">
+					<p class='logo'>Canary Bank</p>
+					<input type='checkbox' id='nav-toggle' class='nav-toggle'>
+					<nav class='nav'>
+						<ul>
+							<?php
+			//I probably need to add another conditional
+			//to handle the session with a studentid.
+							echo "<li><a href='index.php'>Home</a></li>";
+									echo "<li><a href='contact.php'>Contact</a></li>";
+									echo "<li><a href='signup.php'>Signup</a></li>";
+									echo "<li><a href='login.php'>Login</a></li>";
+								// if (isset($_SESSION["useruid"])) {
+								// 	echo "<li><a href='profile.php'>Students</a></li>";
+								// 	echo "<li><a href='graph.php'>Charts</a></li>";
+								// 	echo "<li><a href='profile.php'>Profile</a></li>";
+								// 	echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+								// }
+								// else {
+								// 	echo "<li><a href='index.php'>Home</a></li>";
+								// 	echo "<li><a href='contact.php'>Contact</a></li>";
+								// 	echo "<li><a href='signup.php'>Signup</a></li>";
+								// 	echo "<li><a href='login.php'>Login</a></li>";
+								// }
+							?>
+						</ul>
+					</nav>
+					<label for='nav-toggle' class='nav-toggle-label'>
+						<span></span>
+					</label>
+				</div>
+				<div class="header-content">
+					
+					<h1>Healthy financial habits <br> Healthy financial futures</h1>
+					<p>The easiest way to teach your students about wealth</p>
+					<button class="call-to-action">GET STARTED</button>
+				</div>
+			<!-- </div> -->
 		</header>
 		<!-- test the image file to get the sizing
 			and mobile responsiveness right
