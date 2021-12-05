@@ -18,7 +18,7 @@ canary yellow
 /* color variables go here */
 :root {
 	--background:rgb(250,255,108);
-	--button:rgb(250,255,108);
+	--button:rgb(250,208,253);
 	--dark-text:rgb(35,35,35);
 };
 
@@ -33,12 +33,39 @@ body {
 	margin-top: 2rem;
 }
 
-.form {
+.section-full {
+	height: 100vh;
+}
+
+.section-half {
+	height: 50vh;
+}
+
+.join-teachers {
+	position: relative;
+	height: 100%;
+	/*width: 50%;*/
+	background-image: url('../images/kid-learning-about-money.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.join-text {
+	position: absolute;
+	top:35%;
+	font-size: 2rem;
+}
+
+.white-text {
+	color: white;
+}
+/*.form {
 	display: flex;
 	flex-direction: column;
 	width: 50%;
 	margin: auto;
-}
+}*/
 
 /*teacher dashboard nav*/
 /*.dashboard-container {

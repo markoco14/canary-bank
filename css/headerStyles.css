@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	/*justify-content: space-between;*/
-	widht: 100vw;
+	/*widht: 100vw;*/
 	height: 100vh;
 	background-image: url('../images/canary-hero.jpg');
 	background-color: var(--background);
@@ -11,7 +11,7 @@
 	background-repeat: no-repeat;
 }
 
-.header-topline {
+.header-navline {
 	display: flex;
 	/*flex-direction: column;*/
 	justify-content: space-between;
@@ -23,14 +23,27 @@
 	left: 5%;
 }
 
+.header-content h1,p {
+	margin-bottom: 1rem;
+}
+
 .header-image {
 	object-fit: cover;
 	width: 100vw;
 	height: 100vh;
 }
 
-.call-to-action {
+.hero-button {
+	padding: 1em 2em;
+	border: none;
+	border-radius: 5px 5px 5px 5px;
+	/*box-shadow: 2px 2px rgba(225,225,225,50%);*/
 	background-color: var(--button);
+}
+
+.hero-button:hover {
+	background-color: var(--background);
+	/*transform: scale(1.2);*/
 }
 
 .teacher-header {
