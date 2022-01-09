@@ -1,9 +1,5 @@
 <?php
 	include_once 'teacher_header.php';
-	include_once '../includes/dbh.inc.php';
-	include_once 'includes/teacher_functions.inc.php';
-	$userUid = $_SESSION['useruid'];
-	$userName = $_SESSION['username'];
 ?>
 <nav class="dashboard-nav">
     <ul>
@@ -16,7 +12,7 @@
 </nav>
 <div class="dashboard-content-container">
 	<section class="section">
-		<h2>Your Classes</h2>
+		<h2>Your Classes, <?php echo $userUid, $userName ?></h2>
 		<p>Welcome to the Classes section. Manage all your classes and students here. Click "New Class" at the bottom if you want to create a new class. Your classes will appear below so you can sign up your students.</p>
 		<div>Placeholder section. The classes you make will appear here.</div><!--for class boxes-->
 		<form class="form" id="classForm" action="includes/add_new_class.inc.php" method="post">
@@ -37,6 +33,11 @@
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "success") {
 						echo "<p>Class created!</p>";
+					} 
+				}
+				if (isset($_GET["error"])) {
+					if ($_GET["error"] == "stmtfailed") {
+						echo "<p>Something went wrong. Please try again.</p>";
 					} 
 				}
 			?>

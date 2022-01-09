@@ -5,3 +5,4 @@
 		<p>footers are great</p>
 	</footer>
 </body>
+</html>

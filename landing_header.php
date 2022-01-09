@@ -14,7 +14,7 @@
 		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>
-		<header class="col-sm-12">
+		<header class="landing-header col-sm-12">
 			<div class="header-navline">
 				<p class='logo'>Canary Bank</p>
 				<input type='checkbox' id='nav-toggle' class='nav-toggle'>
@@ -45,6 +45,12 @@
 				<label for='nav-toggle' class='nav-toggle-label'>
 					<span></span>
 				</label>
+			</div>
+			<div class="header-content">
+				
+				<h1>Healthy financial habits <br> Healthy financial futures</h1>
+				<p>Set your students on the path to wealth</p>
+				<a href="#new-teacher-sign-up"><button class="hero-button">GET STARTED</button></a>
 			</div>
 		</header>
 		<!-- test the image file to get the sizing

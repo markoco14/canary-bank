@@ -1,5 +1,9 @@
 <?php 
 	session_start();
+	include_once '../includes/dbh.inc.php';
+	include_once 'includes/teacher_functions.inc.php';
+	$userName = $_SESSION['username'];
+	$userUid = $_SESSION['useruid'];
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +13,8 @@
 		<title>Canary Bank</title>
 		<link href='../css/bankStyle.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
 		<link href='../css/headerStyles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
+		<link href='teacher_styles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'>
+
 		<!-- <link href='css/studentProfiles.css?<?php echo time(); ?>' rel='stylesheet' type='text/css'> -->
 	</head>
 	<body>

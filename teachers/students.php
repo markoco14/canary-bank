@@ -1,9 +1,5 @@
 <?php
 	include_once 'teacher_header.php';
-	include_once '../includes/dbh.inc.php';
-	include_once 'includes/teacher_functions.inc.php';
-	$userUid = $_SESSION['useruid'];
-	$userName = $_SESSION['username'];
 ?>
 <nav class="dashboard-nav">
     <ul>
@@ -16,7 +12,7 @@
 </nav>
 <div class="dashboard-content-container">
 	<section class="section">
-		<h2>Open New Student Account</h2>
+		<h2>Open New Student Account <?php echo $userUid, $userName ?></h2>
 		<form class="form" action='includes/add_new_student.inc.php' method='post'>
 			<select name="class" id="choose-class">
 				<option value="None">Choose class</option>
