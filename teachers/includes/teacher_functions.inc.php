@@ -54,24 +54,40 @@ function classUidExists($conn, $classuid) {
 }
 
 //change this into addNewClass function
-function addNewClass($conn, $classname, $classuid) {
-	$teachername = ($_SESSION["username"]);
-	$teacheruid = ($_SESSION["useruid"]);
+function addNewClass($conn, $classname, $classuid, $teachername, $teacheruid) {
+	// global $userName;
+	// global $userUid;
+	// $teachername = ($_SESSION["username"]);
+	// $teacheruid = ($_SESSION["useruid"]);
 
-	$sql = "INSERT INTO classes (classesName, classesUid, classesTeachername, classesTeacheruid) VALUES (?, ?, '".$teachername."', '".$teacheruid."');";
+	$sql = "INSERT INTO classes (classesName, classesUid, classesTeachername, classesTeacheruid) VALUES (?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../teachers/teacher.php?error=stmtfailed");
+		header("location: ../classes.php?error=stmtfailed");
 		exit();
 	}
-	// "ss" because 2 parameters
-	mysqli_stmt_bind_param($stmt, "ss", $classname, $classuid);
+	// "ssss" because 2 parameters
+	mysqli_stmt_bind_param($stmt, "ssss", $classname, $classuid, $teachername, $teacheruid);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../teacher.php?error=success");
+	header("location: ../classes.php?error=success");
 	exit();
 }
 
+function displayClassList() {
+	global $userUid;
+	global $conn;
+	$class_list_query = "SELECT * FROM classes WHERE classesTeacheruid = '$userUid' ";
+	// die($class_list_query);
+	$class_list_result = mysqli_query($conn, $class_list_query);
+	while($row = mysqli_fetch_assoc($class_list_result)){
+		$yourClassName = $row['classesName'];
+		echo "<div class='class-thumbnail'>";
+			echo "<p class='class-thumbnail-text'>$yourClassName</p>";
+			echo "<img class='class-thumbnail-image' src='../student-images/flatley-cropped.jpg'>";
+		echo "</div>";
+	}
+}
 
 ///////////////////////////////////////////////////////////////
 //MAKE NEW STUDENT ACCOUNTS SECTION
@@ -191,7 +207,7 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
 	}
 
 	// "ssssssss" because 8 parameters
-	mysqli_stmt_bind_param($stmt, "ssssssss", $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens);
+	mysqli_stmt_bind_param($stmt, "ssssssssss", $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens, $teachername, $teacheruid);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../students.php?error=none");
@@ -203,6 +219,8 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
  <?php 
 
  function welcomeTeacher() {
+	global $conn;
+
  	global $userUid;
  	global $userName;
  	echo "<h2>";
@@ -214,20 +232,7 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
  }
 
 
- function displayClassList() {
- 	global $userUid;
- 	global $conn;
- 	$class_list_query = "SELECT * FROM classes WHERE classesTeacheruid = '$userUid' ";
- 	// die($class_list_query);
- 	$class_list_result = mysqli_query($conn, $class_list_query);
- 	while($row = mysqli_fetch_assoc($class_list_result)){
- 		$yourClassName = $row['classesName'];
- 		echo "<div class='class-thumbnail'>";
- 			echo "<p class='class-thumbnail-text'>$yourClassName</p>";
- 			echo "<img class='class-thumbnail-image' src='../student-images/flatley-cropped.jpg'>";
- 		echo "</div>";
- 	}
- }
+ 
 
  function fillstudentRegistrationSelectorWithClasses() {
  	global $conn;

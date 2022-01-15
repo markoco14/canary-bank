@@ -1,5 +1,5 @@
 <?php
-	include_once 'header.php';
+	include_once 'landing_header.php';
 ?>
 	<!-- body outline:
 		social proof

@@ -72,8 +72,7 @@ body {
     display: flex;
     flex-direction: column;
 }*/
-.dashboard-nav {
-    /*margin-top: 1em;*/
+/* .dashboard-nav {
     border-bottom: 2px solid black;
 }
 
@@ -97,7 +96,7 @@ body {
 	width: 95%;
 	max-width: 800px;
 }
-
+ */
 
 /*Service info section begins here*/
 .teacher-info-container {
