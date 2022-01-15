@@ -25,13 +25,18 @@ if (isset($_POST["submit"])) {
 
 	//now we need to check for errors
 	//just like the sign up page
-	if (emptyClassInput($classname, $classuid) !== false) {
-		header("location: ../../teacher.php?error=emptyclassinput");
+	if (emptyClassName($classname) !== false) {
+		header("location: ../../teachers/classes.php?error=emptyclassname");
+		exit();
+	}
+
+	if (emptyClassUid($classuid) !== false) {
+		header("location: ../../teachers/classes.php?error=emptyclassid");
 		exit();
 	}
 
 	if (classUidExists($conn, $classuid) !== false) {
-		header("location: ../../teacher.php?error=classuidexists");
+		header("location: ../../teachers/classes.php?error=classuidexists");
 		exit();
 	}
 

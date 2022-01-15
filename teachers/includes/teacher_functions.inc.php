@@ -7,9 +7,19 @@
 //UPDATE TEACHER CLASS LIST SECTION 
 ///////////////////////////////////////////////////////////////
 
-function emptyClassInput($classname, $classuid) {
+function emptyClassName($classname) {
 	$result;
-	if (empty($classname) || empty($classuid)) {
+	if (empty($classname)) {
+		$result = true;
+	} else {
+		$result = false;
+	}
+	return $result;
+}
+
+function emptyClassUid($classuid) {
+	$result;
+	if (empty($classuid)) {
 		$result = true;
 	} else {
 		$result = false;
