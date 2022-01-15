@@ -27,17 +27,17 @@ if (isset($_POST["submit"])) {
 	
 	//check for errors
 	if (emptyStudentInfo($studentName, $studentId, $studentClassUid, $studentAge, $studentGender, $studentHappyFaces, $studentTokens) !== false) {
-		header("location: ../teacher.php?error=emptyinput");
+		header("location: ../students.php?error=emptyinput");
 		exit();
 	}
 
 	if (invalidStudentId($studentId) !== false) {
-		header("location: ../teacher.php?error=invalidstudentid");
+		header("location: ../students.php?error=invalidstudentid");
 		exit();
 	}
 
 	if (invalidClass($studentClassName) !== false) {
-		header("location: ../teacher.php?error=invalidclass");
+		header("location: ../students.php?error=invalidclass");
 		exit();
 	}
 
