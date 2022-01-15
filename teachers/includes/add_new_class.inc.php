@@ -11,6 +11,9 @@ $sql = "UPDATE `users` SET `usersClassname`='".$classname."',`usersClassuid`='".
 /*	<?php echo "<input type='hidden' name='teachername' value={$userName}>"?>
 			<?php echo "<input type='hidden' name='teacheruid' value={$userUid}>"?> */
 include_once "../teacher_header.php";
+require_once '../../includes/dbh.inc.php';
+require_once '../../includes/functions.inc.php';
+require_once 'teacher_functions.inc.php';
 
 //uses post not get
 if (isset($_POST["submit"])) {
@@ -18,6 +21,7 @@ if (isset($_POST["submit"])) {
 	$classuid = $_POST["classuid"];
 	$teachername = $userName;
 	$teacheruid = $userUid;
+	
 	// $teachername = $_POST["teachername"];
 	// $teacheruid = $_POST["teacheruid"];
 	// $teachername = $_SESSION["usersUid"];
@@ -25,9 +29,7 @@ if (isset($_POST["submit"])) {
 	// $teachername = "Mark";
 	// $teacheruid = "markymark";
 	//in the end I needed both dbh and functions files
-	require_once '../../includes/dbh.inc.php';
-	require_once '../../includes/functions.inc.php';
-	require_once 'teacher_functions.inc.php';
+	
 
 	//now we need to check for errors
 	//just like the sign up page
