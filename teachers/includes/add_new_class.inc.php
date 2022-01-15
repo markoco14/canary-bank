@@ -12,34 +12,31 @@ $sql = "UPDATE `users` SET `usersClassname`='".$classname."',`usersClassuid`='".
 			<?php echo "<input type='hidden' name='teacheruid' value={$userUid}>"?> */
 include_once "../teacher_header.php";
 require_once '../../includes/dbh.inc.php';
-require_once '../../includes/functions.inc.php';
+// require_once '../../includes/functions.inc.php';
 require_once 'teacher_functions.inc.php';
 
 //uses post not get
 if (isset($_POST["submit"])) {
+	global $conn;
 	$classname = $_POST["classname"];
 	$classuid = $_POST["classuid"];
 	$teachername = $userName;
 	$teacheruid = $userUid;
-	
-	// $teachername = $_POST["teachername"];
-	// $teacheruid = $_POST["teacheruid"];
-	// $teachername = $_SESSION["usersUid"];
-	// $teacheruid = $_SESSION["usersName"];
-	// $teachername = "Mark";
-	// $teacheruid = "markymark";
-	//in the end I needed both dbh and functions files
-	
 
 	//now we need to check for errors
 	//just like the sign up page
-	if (emptyClassInput($classname, $classuid) !== false) {
-		header("location: ../../teacher.php?error=emptyclassinput");
+	if (emptyClassName($classname) !== false) {
+		header("location: ../../teachers/classes.php?error=emptyclassname");
+		exit();
+	}
+
+	if (emptyClassUid($classuid) !== false) {
+		header("location: ../../teachers/classes.php?error=emptyclassid");
 		exit();
 	}
 
 	if (classUidExists($conn, $classuid) !== false) {
-		header("location: ../../teacher.php?error=classuidexists");
+		header("location: ../../teachers/classes.php?error=classuidexists");
 		exit();
 	}
 

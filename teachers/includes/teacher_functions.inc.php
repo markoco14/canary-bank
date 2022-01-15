@@ -7,9 +7,19 @@
 //UPDATE TEACHER CLASS LIST SECTION 
 ///////////////////////////////////////////////////////////////
 
-function emptyClassInput($classname, $classuid) {
+function emptyClassName($classname) {
 	$result;
-	if (empty($classname) || empty($classuid)) {
+	if (empty($classname)) {
+		$result = true;
+	} else {
+		$result = false;
+	}
+	return $result;
+}
+
+function emptyClassUid($classuid) {
+	$result;
+	if (empty($classuid)) {
 		$result = true;
 	} else {
 		$result = false;
@@ -55,11 +65,18 @@ function classUidExists($conn, $classuid) {
 
 //change this into addNewClass function
 function addNewClass($conn, $classname, $classuid, $teachername, $teacheruid) {
-	// global $userName;
-	// global $userUid;
-	// $teachername = ($_SESSION["username"]);
-	// $teacheruid = ($_SESSION["useruid"]);
 
+	// first update the teacher's number of classes in the users table
+	$query = "SELECT `number_of_classes` FROM `users` WHERE `usersUid` = '".$teacheruid."';";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_assoc($result);
+	$number_of_classes = intval($row['number_of_classes']);
+	$number_of_classes++;
+
+	$update_query = "UPDATE `users` SET `number_of_classes`='".$number_of_classes."' WHERE `usersUid` = '".$teacheruid."';";
+	$result = mysqli_query($conn, $update_query);
+
+	// now make prepared statements to insert the new class into the classes table
 	$sql = "INSERT INTO classes (classesName, classesUid, classesTeachername, classesTeacheruid) VALUES (?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -80,13 +97,13 @@ function displayClassList() {
 	$class_list_query = "SELECT * FROM classes WHERE classesTeacheruid = '$userUid' ";
 	// die($class_list_query);
 	$class_list_result = mysqli_query($conn, $class_list_query);
+	echo "<ul>";
 	while($row = mysqli_fetch_assoc($class_list_result)){
 		$yourClassName = $row['classesName'];
-		echo "<div class='class-thumbnail'>";
-			echo "<p class='class-thumbnail-text'>$yourClassName</p>";
-			echo "<img class='class-thumbnail-image' src='../student-images/flatley-cropped.jpg'>";
-		echo "</div>";
+			echo "<li>$yourClassName</li>";
 	}
+	echo "</ul>";
+
 }
 
 ///////////////////////////////////////////////////////////////
@@ -196,10 +213,9 @@ function studentIdExists($conn, $id) {
 //and class name/uid
 //teacher should be easy
 //just repeat from the class section.
-function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens) {
-	$teachername = ($_SESSION["username"]);
-	$teacheruid = ($_SESSION["useruid"]);
-	$sql = "INSERT INTO students (studentsName, studentsId, studentsClass, studentsClassuid, studentsAge, studentsGender, studentsFaces, studentsTokens, studentsTeachername, studentsTeacheruid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '".$teachername."', '".$teacheruid."');";
+function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens, $teachername, $teacheruid) {
+
+	$sql = "INSERT INTO students (studentsName, studentsId, studentsClass, studentsClassuid, studentsAge, studentsGender, studentsFaces, studentsTokens, studentsTeachername, studentsTeacheruid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: ../students.php?error=stmtfailed");
