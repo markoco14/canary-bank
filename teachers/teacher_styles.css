@@ -17,4 +17,20 @@
 .dashboard-content {
     width:85%;
     background-color:bisque;
+
+}
+
+.dashboard-flex {
+    display:flex;
+}
+
+.form-flex {
+    width:70%;
+    display:flex;
+    flex-direction:column;
+}
+
+.class-list-container {
+    overflow-y:scroll;
+    max-height:50%;
 }
