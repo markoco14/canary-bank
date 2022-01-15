@@ -13,18 +13,19 @@ if (isset($_POST["submit"])) {
 	$classname = $_POST["classname"];
 	$classuid = $_POST["classuid"];
 	//in the end I needed both dbh and functions files
-	require_once 'dbh.inc.php';
-	require_once 'functions.inc.php';
+	require_once '../../includes/dbh.inc.php';
+	// require_once '../../includes/functions.inc.php';
+	require_once 'teacher_functions.inc.php';
 
 	//now we need to check for errors
 	//just like the sign up page
 	if (emptyClassInput($classname, $classuid) !== false) {
-		header("location: ../teacher.php?error=emptyclassinput");
+		header("location: ../../teacher.php?error=emptyclassinput");
 		exit();
 	}
 
 	if (classUidExists($conn, $classuid) !== false) {
-		header("location: ../teacher.php?error=classuidexists");
+		header("location: ../../teacher.php?error=classuidexists");
 		exit();
 	}
 
@@ -33,6 +34,6 @@ if (isset($_POST["submit"])) {
 	addNewClass($conn, $classname, $classuid);
 }
 else {
-	header("location: ../teacher.php");
+	header("location: ../../teacher.php");
 		exit();
 }

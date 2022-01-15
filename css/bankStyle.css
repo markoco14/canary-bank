@@ -18,38 +18,128 @@ canary yellow
 /* color variables go here */
 :root {
 	--background:rgb(250,255,108);
+	--button:rgb(250,208,253);
 	--dark-text:rgb(35,35,35);
 };
 
 body {
 	margin:0px;
 	padding:0px;
+	box-sizing: border-box;
 }
-/*Teacher info section begins here*/
-.teacher-section {
-	text-align:center;
+
+.section {
+	/*min-height: 50vh;*/
+	margin-top: 2rem;
 }
-/*Service info section begins here*/
-.info-container {
+
+.section-full {
+	height: 100vh;
+}
+
+.section-half {
+	height: 50vh;
+}
+
+.join-teachers {
+	position: relative;
+	height: 100%;
+	/*width: 50%;*/
+	background-image: url('../images/kid-learning-about-money.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.join-text {
+	position: absolute;
+	top:35%;
+	font-size: 2rem;
+}
+
+.white-text {
+	color: white;
+}
+/*.form {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: auto;
+}*/
+
+/*teacher dashboard nav*/
+/*.dashboard-container {
+    display: flex;
+    flex-direction: column;
+}*/
+.dashboard-nav {
+    /*margin-top: 1em;*/
+    border-bottom: 2px solid black;
+}
+
+.dashboard-nav ul {
 	display: flex;
 	justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    width: 100%;
+}
+
+.dashboard-nav li {
+    padding: 0.5em;
+}
+
+.dashboard-content-container {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 95%;
+	max-width: 800px;
+}
+
+
+/*Service info section begins here*/
+.teacher-info-container {
+	display: flex;
+	/*justify-content: center;*/
 	align-items: top;
 	flex-wrap:wrap;
+	gap: 1em;
 }
 
-.info-item {
-	margin:10px 5px;
-	width:80%;
-	min-width:100px;
+@media (min-width: 650px) {
+	.teacher-info-card {
+		width: 30%;
+	}
 }
 
-.info-item h2,h3 {
-	text-align:center;
+.teacher-info-card img {
+	object-fit: cover;
+	/*height: 200px;*/
+	width: 100%;
+	max-width: 400px;
 }
 
+@media (min-width: 650px) {
+	.teacher-info-card img {
+		object-fit: cover;
+		height: 200px;
+	}
+}
+
+.large-screen-break {
+	display: none;
+}
+
+@media (min-width: 650px) {
+	.large-screen-break {
+		display: block;
+	}
+}
 /*The Add/View Class section begins here*/
 
-.class-section {
+.create-classes-section {
 	position:relative;
 	padding: 5px 5px;
 }
@@ -68,20 +158,35 @@ body {
 	background-color:var(--background);
 }
 
+.student-profiles-row {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.toggle-profiles-button-wrapper {
+	display: flex;
+}
+
+.toggle-profiles-button {
+	width: 50%;
+}
+
 /*THIS BOX WRAPS THE NAV AND BODY CONTENT TOGETHER*/
-.nav-body-box {
+.main {
 	display:flex;
 }
 
+
 /*WRAP ALL THE BODY CONTENT IN ONE CONTAINER*/
 /*SEPARATES BOD CONTENT FROM NAV ON LEFT*/
-.whole-content-box {
+.container {
 	margin-left:15vw;
 	margin-right:15vw;
 	height:200vh;
 }
 
-.whole-content-box h2 {
+.container h2 {
 	text-align:center;
 }
 
@@ -139,4 +244,37 @@ body {
 		width:100%;
 		margin-left:0px;
 	}
+}
+
+
+/* Teacher page styles */
+.class-thumbnail-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1em 0 0;
+	justify-content: center;
+	/*column-gap: 1em;*/
+	/*flex-direction: column;*/
+}
+
+.class-thumbnail {
+	position: relative;
+	width: 75px;
+	height: 75px;
+	border: 2px solid black;
+	overflow: hidden;
+	/*margin: 1em 0 0;*/
+}
+
+.class-thumbnail-image {
+	object-fit: cover;
+	height: 75px;
+	width: 75px;
+}
+
+
+.class-thumbnail-text {
+	position: absolute;
+	color: white;
+	font-size: 2rem;
 }

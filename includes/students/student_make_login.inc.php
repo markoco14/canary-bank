@@ -6,8 +6,8 @@ if (isset($_POST["submit"])) {
 	$pwd = $_POST["password"];
 	$pwdRepeat = $_POST["pwdrepeat"];
 
-	require_once "dbh.inc.php";
-	require_once "parentFunctions.inc.php";
+	require_once "../dbh.inc.php";
+	require_once "../functions.inc.php";
 
 	//or you can have a parents table? 
 	//they can input a studentID, email, and password and that can make requests of the students table using that students ID? they can make multiple student IDs in their table?
@@ -20,14 +20,14 @@ if (isset($_POST["submit"])) {
 		header("location: ../studentSignUp.php?error=itworked")
 	}*/
 
-	if (emptyInputSignup($sid, $email, $pwd, $pwdRepeat) !== false) {
-		header("location: ../studentSignUp.php?error=emptyinput");
+	if (setStudentLoginEmptyInput($sid, $email, $pwd, $pwdRepeat) !== false) {
+		header("location: ../../students.php?error=emptyinput");
 		exit();
 
 	}
 
-	if (invalidEmail($email) !== false) {
-		header("location: ../studentSignUp.php?error=invalidemail");
+	if (setStudentLoginInvalidEmail($email) !== false) {
+		header("location: ../../students.php?error=invalidemail");
 		exit();
 
 	}
@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
 
 	$result = mysqli_query($conn, "UPDATE students SET studentsEmail='$email', studentsPassword='$hashedPwd' WHERE studentsId='$sid'");
 	if ($result) {
-		header("location: ../studentSignUp.php?error=none");
+		header("location: ../../students.php?error=none");
 	}
 
 	//check for errors
