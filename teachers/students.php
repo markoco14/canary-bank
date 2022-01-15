@@ -13,27 +13,65 @@
 <div class="dashboard-content-container">
 	<section class="section">
 		<h2>Open New Student Account <?php echo $userUid, $userName ?></h2>
-		<form class="form" action='includes/add_new_student.inc.php' method='post'>
-			<select name="class" id="choose-class">
+		<form class="form-flex" action='includes/add_new_student.inc.php' method='post'>
+			<select name="class" id="choose-class" class="form-control">
 				<option value="None">Choose class</option>
 				<?php 
 					fillstudentRegistrationSelectorWithClasses();
 				 ?>
 			</select>
-			<input type='text' name='name' placeholder='First name...'>
-			<input type='text' name='id' placeholder='Student ID...'>
-			<input type='text' name='age' placeholder='Age...'>
+			<input 
+				class="form-control"
+				type='text' 
+				name='name' 
+				placeholder='First name...'>
+			<input 
+				class="form-control"
+				type='text' 
+				name='id' 
+				placeholder='Student ID...'>
+			<input 
+				class="form-control"
+				type='text' 
+				name='age' 
+				placeholder='Age...'>
 			<div>
-				<input type="radio" name="gender" value="boy" id="boy">
-				<label for="boy">Boy</label>
-				<input type="radio" name="gender" value="girl" id="girl">
-				<label for="girl">Girl</label>
-				<input type="radio" name="gender" value="other" id="other">
-				<label for="other">Other</label>
+				<input 
+					type="radio" 
+					name="gender" 
+					value="boy" 
+					id="boy">
+				<label 
+					for="boy">Boy</label>
+				<input 
+					type="radio" 
+					name="gender" 
+					value="girl" 
+					id="girl">
+				<label 
+					for="girl">Girl</label>
+				<input 
+					type="radio" 
+					name="gender" 
+					value="other" 
+					id="other">
+				<label 
+					for="other">Other</label>
 			</div>
-			<input type='text' name='happyfaces' placeholder='How many happy faces do you have?...'>
-			<input type='text' name='tokens' placeholder='How many tokens do you have?...'>
-			<button type='submit' name='submit' class='add-class'>Sign Up</button>
+			<input 
+				class="form-control"
+				type='text' 
+				name='happyfaces' 
+				placeholder='How many happy faces do you have?...'>
+			<input 
+				class="form-control"
+				type='text' 
+				name='tokens' 
+				placeholder='How many tokens do you have?...'>
+			<button 
+				type='submit' 
+				name='submit' 
+				class='add-class'>Sign Up</button>
 			<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {

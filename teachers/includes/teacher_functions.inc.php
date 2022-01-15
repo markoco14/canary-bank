@@ -213,10 +213,9 @@ function studentIdExists($conn, $id) {
 //and class name/uid
 //teacher should be easy
 //just repeat from the class section.
-function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens) {
-	$teachername = ($_SESSION["username"]);
-	$teacheruid = ($_SESSION["useruid"]);
-	$sql = "INSERT INTO students (studentsName, studentsId, studentsClass, studentsClassuid, studentsAge, studentsGender, studentsFaces, studentsTokens, studentsTeachername, studentsTeacheruid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '".$teachername."', '".$teacheruid."');";
+function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, $happyFaces, $tokens, $teachername, $teacheruid) {
+
+	$sql = "INSERT INTO students (studentsName, studentsId, studentsClass, studentsClassuid, studentsAge, studentsGender, studentsFaces, studentsTokens, studentsTeachername, studentsTeacheruid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: ../students.php?error=stmtfailed");
