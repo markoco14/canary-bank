@@ -94,7 +94,7 @@ function addNewClass($conn, $classname, $classuid, $teachername, $teacheruid) {
 function displayClassList() {
 	global $userUid;
 	global $conn;
-	$class_list_query = "SELECT * FROM classes WHERE classesTeacheruid = '$userUid' ";
+	$class_list_query = "SELECT * FROM classes WHERE classesTeacheruid = '$userUid' ;";
 	// die($class_list_query);
 	$class_list_result = mysqli_query($conn, $class_list_query);
 	echo "<ul>";
@@ -347,9 +347,31 @@ function newStudentAccount($conn, $name, $id, $class, $classuid, $age, $gender, 
  		<?php  } ?>
  		</ul>
 
- 	<?php } ?>	
+ 	<?php } ?>
 
-<?php 
+<?php
+
+
+function displayAllStudents() {
+	// query the db for all students with teachuid
+	// display in list
+	// no need to put the <ul> element in function. put it in the html
+	global $conn;
+	global $userUid;
+	$student_list_query = "SELECT * FROM `students` WHERE `studentsTeacheruid` = '$userUid';";
+	$result = mysqli_query($conn, $student_list_query);
+	// var_dump($result);
+	while ($row = mysqli_fetch_assoc($result)) {
+
+		$studentName = $row['studentsName'];
+		$studentUid = $row['studentsId'];
+		$studentClass = $row['studentsClass'];
+		// $studentClass = $row['studentsClass'];
+		echo "<li> $studentName . $studentUid . $studentClass</li>";
+	}
+}
+
+
 function showStudentDashboard(){
 	$classID = $_POST['class'];
 	global $conn;
