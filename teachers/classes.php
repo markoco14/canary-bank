@@ -1,15 +1,9 @@
 <?php
 	include_once 'teacher_header.php';
 ?>
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="teacher.php">Home</a></li>
-        <li><a href="classes.php">Classes</a></li>
-        <li><a href="students.php">Students</a></li>
-        <li><a href="bank.php">Bank</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
-</nav>
+<?php
+	include_once 'teacher_dash_nav.php';
+?>
 <div class="dashboard-content">
 	<!-- <section class="section"> -->
 		<h2>Your Classes, <?php echo $userUid, $userName ?></h2>

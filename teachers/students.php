@@ -1,15 +1,9 @@
 <?php
 	include_once 'teacher_header.php';
 ?>
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="teacher.php">Home</a></li>
-        <li><a href="classes.php">Classes</a></li>
-        <li><a href="students.php">Students</a></li>
-        <li><a href="bank.php">Bank</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
-</nav>
+<?php
+	include_once 'teacher_dash_nav.php';
+?>
 <div class="dashboard-content">
 	<h2>Open New Student Account <?php echo $userUid, $userName ?></h2>
 	<p>Create new students, delete and edit their information, and view class lists.</p>
@@ -193,26 +187,7 @@
 				?>
 			</div>
 		</article>
-		<!-- <div>
 
-			<h2>Class List</h2>
-			<form class="form-flex" action='' method='post'>
-				<p>Choose a class to see registered students</p>
-				<select name="class" id="choose-class">
-					<option value="None">Choose class</option>
-					<?php 
-						// fillstudentRegistrationSelectorWithClasses();
-						?>
-				</select>
-				<button type="submit" class="add-class" id="profiles" name="profiles">Show Profiles</button>	
-			</form>
-			<?php 
-				// if (isset($_POST['profiles'])){
-					// showStudentDashboard();
-				// }
-
-			?>		
-		</div> -->
 	</div>
 </div>
 <?php include_once 'teacher_footer.php'; ?>
