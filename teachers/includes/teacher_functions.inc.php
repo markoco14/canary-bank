@@ -3,6 +3,29 @@
 // session_start();
 
 
+//////////////////
+
+// UPDATE TEACHER INFO SECTION
+
+//////////////////
+
+function editTeacherAccountInfo($conn, $teacherName, $teacherEmail, $old_teacher_name, $old_teacher_email)
+{
+	
+	$edit_teacher_query = "UPDATE users SET `usersName` = '".$teacherName."', `usersEmail` = '".$teacherEmail."';";
+	$result = mysqli_query($conn, $edit_teacher_query);
+	if (!$result) {
+		die('Something went wrong with your query');
+		exit();
+	}
+
+	header("location: ../settings.php?error=success");
+	exit();
+
+}
+
+
+
 ///////////////////////////////////////////////////////////////
 //UPDATE TEACHER CLASS LIST SECTION 
 ///////////////////////////////////////////////////////////////
