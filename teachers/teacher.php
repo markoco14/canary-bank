@@ -3,13 +3,9 @@
 ?>
 <!-- opening main tag included in header -->
 <!--Teacher info section begins here -->
-<nav class="dashboard-nav">
-		<a href="teacher.php">Home</a>
-		<a href="classes.php">Classes</a>
-		<a href="students.php">Students</a>
-		<a href="bank.php">Bank</a>
-		<a href="#">Admin</a>
-</nav>
+<?php
+	include_once 'teacher_dash_nav.php';
+?>
 <section class="dashboard-content">
 	<?php 
 		welcomeTeacher();

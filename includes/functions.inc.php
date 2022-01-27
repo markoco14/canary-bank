@@ -62,7 +62,7 @@ function uidExists($conn, $username, $email) {
 	mysqli_stmt_execute($stmt);
 
 	$resultData = mysqli_stmt_get_result($stmt);
-
+	// die($resultData);
 	if ($row = mysqli_fetch_assoc($resultData)) {
 		return $row;
 	} 
@@ -114,16 +114,17 @@ function loginUser($conn, $username, $pwd) {
 	//is replacing $email
 	//then the program will automatically fit the log in username
 	//into the database existing username or email
-	$uidExists = uidExists($conn, $username, $username);
-
+	$teacher_info = uidExists($conn, $username, $username);
 	//check if this function returns as false
-	if ($uidExists === False) {
+	if ($teacher_info === False) {
 		header("location: ../login.php?error=wronglogin");
 		exit();
 	}
 
+	// print_r($teacher_info);
+	// die();
 	//now we need to check the password with the hashed password
-	$pwdHashed = $uidExists["usersPwd"];
+	$pwdHashed = $teacher_info["usersPwd"];
 	$checkPwd = password_verify($pwd, $pwdHashed);
 
 	if ($checkPwd === false) {
@@ -132,9 +133,15 @@ function loginUser($conn, $username, $pwd) {
 	}
 	else if ($checkPwd === true) {
 		session_start();
-		$_SESSION["userid"] = $uidExists["usersId"];
-		$_SESSION["useruid"] = $uidExists["usersUid"];
-		$_SESSION["username"] = $uidExists["usersName"];
+		$_SESSION["userid"] = $teacher_info["usersID"];
+		$_SESSION["useruid"] = $teacher_info["usersUid"];
+		$_SESSION["username"] = $teacher_info["usersName"];
+		$_SESSION["useremail"] = $teacher_info["usersEmail"];
+		$_SESSION["userclasses"] = strval($teacher_info["number_of_classes"]);
+		$_SESSION["userstudents"] = strval($teacher_info["number_of_students"]);
+		// die($_SESSION["useremail"] .$_SESSION["userclasses"] . 
+		// $_SESSION["userstudents"] );
+		// die($_SESSION["userstudents"]);
 		header("location: ../teachers/teacher.php");
 		exit();
 	}

@@ -4,6 +4,10 @@
 	include_once 'includes/teacher_functions.inc.php';
 	$userName = $_SESSION['username'];
 	$userUid = $_SESSION['useruid'];
+	$userEmail = $_SESSION['useremail'];
+	$userClasses = $_SESSION['userclasses'];
+	$userStudents = $_SESSION['userstudents'];
+	// die($userStudents);
 ?>
 
 <!DOCTYPE html>
