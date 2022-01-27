@@ -8,9 +8,11 @@ if(isset($_POST['edit'])) {
     global $conn;
     $teacherName = $_POST['teacher_name'];
     $teacherEmail = $_POST['teacher_email'];
+    $teacherUid = $userUid;
+    // var_dump($teacherUid);
     $old_teacher_name = $userName;
 	$old_teacher_email = $userEmail;
-    editTeacherAccountInfo($conn, $teacherName, $teacherEmail, $old_teacher_name, $old_teacher_email);
+    editTeacherAccountInfo($conn, $teacherName, $teacherEmail, $teacherUid, $old_teacher_name, $old_teacher_email);
 
 } else {
     header("location: ../settings.php");

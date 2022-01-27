@@ -9,16 +9,32 @@
 
 //////////////////
 
-function editTeacherAccountInfo($conn, $teacherName, $teacherEmail, $old_teacher_name, $old_teacher_email)
+function editTeacherAccountInfo($conn, $teacherName, $teacherEmail, $teacherUid, $old_teacher_name, $old_teacher_email)
 {
 	
-	$edit_teacher_query = "UPDATE users SET `usersName` = '".$teacherName."', `usersEmail` = '".$teacherEmail."';";
-	$result = mysqli_query($conn, $edit_teacher_query);
-	if (!$result) {
-		die('Something went wrong with your query');
+	$edit_teacher_query = "UPDATE users SET `usersName` = '".$teacherName."', `usersEmail` = '".$teacherEmail."' WHERE `usersUid` = '".$teacherUid."';";
+	$teacher_result = mysqli_query($conn, $edit_teacher_query);
+	if (!$teacher_result) {
+		die('Something went wrong with your teacher query');
+		exit();
+	}
+	$edit_student_query = "UPDATE `students` SET `studentsTeachername`='$teacherName' WHERE `studentsTeacheruid`='$teacherUid';";
+	$student_result = mysqli_query($conn, $edit_student_query);
+
+	if (!$student_result) {
+		die('Something went wrong with your student query');
 		exit();
 	}
 
+	$edit_class_query = "UPDATE `classes` SET `classesTeachername`='$teacherName' WHERE `classesTeacheruid`='$teacherUid';";
+	$class_result = mysqli_query($conn, $edit_class_query);
+
+	if (!$class_result) {
+		die('Something went wrong with your class query');
+		exit();
+	}
+
+	$_SESSION["username"] = $teacherName;
 	header("location: ../settings.php?error=success");
 	exit();
 
