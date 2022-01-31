@@ -36,10 +36,10 @@ if (isset($_POST["submit"])) {
 		exit();
 	}
 
-	if (invalidClass($studentClassName) !== false) {
-		header("location: ../students.php?error=invalidclass");
-		exit();
-	}
+	// if (invalidClass($studentClassName) !== false) {
+	// 	header("location: ../students.php?error=invalidclass");
+	// 	exit();
+	// }
 
 	// no gender check
 
