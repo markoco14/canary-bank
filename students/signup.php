@@ -3,6 +3,10 @@
 	// include "includes/student_functions.inc.php";
 ?>
 	<main>
+		<nav>
+			<a href="login.php">Login</a>
+			<a href="signup.php">Signup</a>
+		</nav>
 		<h1>Welcome to the student page</h1>
 		<?php 
 			// echo "<p>{$_SESSION['id']}</p>";

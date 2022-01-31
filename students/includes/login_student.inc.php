@@ -8,5 +8,11 @@ if (isset($_POST['login_student'])) {
     global $conn;
     $studentId = $_POST['studentid'];
     $studentPwd = $_POST['password'];
-    die($studentId . ' ' . $studentPwd);
+    session_start();
+    $_SESSION["studentuid"] = $studentUidExists['studentsId'];
+    $_SESSION["studentname"] = $studentUidExists['studentsName'];
+
+
+    header("location: ../student.php");
+    exit();
 }

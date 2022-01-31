@@ -4,6 +4,10 @@ include_once "students_header.php";
 
 ?>
 <main>
+    <nav>
+        <a href="login.php">Login</a>
+        <a href="signup.php">Signup</a>
+    </nav>
     <p>Hello World</p>
     <form action="includes/login_student.inc.php" method="post" class="form">
         <div class="control-group">
