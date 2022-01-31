@@ -1,3 +1,7 @@
+<?php 
+	include_once '../includes/dbh.inc.php';
+	include_once 'includes/student_functions.inc.php';
+?>
 <!DOCTYPE html>
 	<head>
 		<meta charset='utf-8'>

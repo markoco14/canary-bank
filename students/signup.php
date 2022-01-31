@@ -1,6 +1,6 @@
-
 <?php 
 	include "students_header.php";
+	// include "includes/student_functions.inc.php";
 ?>
 	<main>
 		<h1>Welcome to the student page</h1>
